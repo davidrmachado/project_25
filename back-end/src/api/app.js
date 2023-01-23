@@ -1,7 +1,7 @@
 const express = require('express');
-require('express-async-errors');
+// require('express-async-errors');
 const { Product } = require('../database/models');
-const login = require('../api/Routes/LoginRouter')
+const login = require('./Routes/LoginRouter');
 
 const app = express();
 
@@ -14,8 +14,6 @@ app.get('/products', async (_req, res) => {
     return res.status(200).json(result);
 });
 
-app.use((err, req, res, _next) => {
-    return res.status(err.status).json({ message: err.message }); 
-});
+app.use((err, req, res, _next) => res.status(err.status).json({ message: err.message }));
 
 module.exports = app;
