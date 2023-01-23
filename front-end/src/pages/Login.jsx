@@ -1,9 +1,13 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
+import api from '../utils/APILink';
 
 function Login() {
   const [inputPassword, setInputPassword] = useState('');
   const [inputEmail, setInputEmail] = useState('');
   const [isDisabled, setIsDisabled] = useState(true);
+  const history = useHistory();
 
   const validateEmail = () => {
     const validEmail = /^\w+@[a-zA-Z_]+?\.[a-zA-Z]{2,3}$/;
@@ -13,6 +17,19 @@ function Login() {
   const verifyPassword = () => {
     const minPasswordLength = 6;
     return inputPassword.length >= minPasswordLength;
+  };
+
+  const login = async () => {
+    try {
+      await api.post('/login', {
+        email: inputEmail,
+        password: inputPassword,
+      });
+
+      history.push('/customer/products');
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   useEffect(() => {
@@ -49,6 +66,7 @@ function Login() {
         type="button"
         data-testid="common_login__button-login"
         disabled={ isDisabled }
+        onClick={ login }
       >
         Login
       </button>
