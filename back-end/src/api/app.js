@@ -1,11 +1,9 @@
 const express = require('express');
 const cors = require('cors')
 
-const { Product } = require('../database/models');
+require('express-async-errors');
 const login = require('./Routes/LoginRouter');
 const register = require('./Routes/registerRouter');
-
-require('express-async-errors');
 
 const app = express();
 app.use(cors())
