@@ -41,17 +41,18 @@ describe('Testa os retornos do endpoint /register', function () {
 
         expect(res.status).to.have.been.calledWith(201);
         expect(res.json).to.have.been.calledWith({ message: "Created" });
+        sinon.restore();
     })
 
     it('Não é possível cadastrar um usuário já registrado', async function () {
-        const res = {};
-        const req = {
-            body: {
-                name: "Gabriel Barbosa",
-                email: "gabigol@email.com",
-                password: "$#reiDaLibertadores#$",
-            }
-        }
+        // const res = {};
+        // const req = {
+        //     body: {
+        //         name: "Gabriel Barbosa",
+        //         email: "gabigol@email.com",
+        //         password: "$#reiDaLibertadores#$",
+        //     }
+        // }
         
         const sendingdata = {
                 name: "Cliente Zé Birita",
@@ -59,13 +60,10 @@ describe('Testa os retornos do endpoint /register', function () {
                 password: "$#zebirita#$",
             }
 
-
+        sinon.stub(User, 'findOne').resolves('nada')
         chai.request(app).post('/register').send(sendingdata).end((req, res) => {
-            expect(res).to.have.status(201);
-            expect(res.body).to.deep.equal({ message: "Created"});
+            expect(res).to.have.status(409);
+            expect(res.body).to.deep.equal({ status: 409, message: "Conflict"});
         })
-
     })
-
-    // afterEach(sinon.restore);
 })
