@@ -2,7 +2,7 @@ const { Product } = require('../../database/models');
 
 const allCards = async () => {
     const cards = await Product.findAll();
-     return cards;
+    return cards;
 };
 
 module.exports = { allCards };
