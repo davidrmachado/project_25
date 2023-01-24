@@ -8,7 +8,8 @@ const login = async (obj) => {
     const response = await User.findOne({ where: { email: obj.email, password: senha } });
     if (!response) throw throwError;
     const { password, ...newObj } = response.dataValues;
-    return { ...newObj, token: generateToken(response) };
+    const token = generateToken(response);
+    return { ...newObj, token };
 };
 
 module.exports = { login };
