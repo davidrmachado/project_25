@@ -24,12 +24,10 @@ const LOGIN_RETURN_OK = {
 
 describe('Testa os retornos associados ao endpoint /login', function () {
     it('Verifica que não é possível fazer login com dados inválidos', async function ()  {
-        const res = { };
-        const req = { body: { email: 'qualquer@gmail.com', password: '12345678' } };
-
-        chai.request(app).get('/login').end((req, res) => {
+        chai.request(app).get('/login').send({ email: 'qualquer@gmail.com', password: '12345678' }).end((req, res) => {
             expect(res).to.have.status(404);
             expect(res.notFound).to.be.equal(true);
+            expect(res.res.statusMessage).to.be.equal('Not Found');
         })
     });
 
