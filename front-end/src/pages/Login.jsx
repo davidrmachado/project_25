@@ -8,18 +8,21 @@ function Login() {
   const [inputPassword, setInputPassword] = useState('');
   const [inputEmail, setInputEmail] = useState('');
   const [isDisabled, setIsDisabled] = useState(true);
+  const [errorMessage, setErrorMessage] = useState('');
   const history = useHistory();
 
   const login = async () => {
     try {
-      await api.post('/login', {
+      const response = await api.post('/login', {
         email: inputEmail,
         password: inputPassword,
       });
 
+      console.log(response);
       history.push('/customer/products');
     } catch (err) {
       console.log(err);
+      setErrorMessage(err.message);
     }
   };
 
@@ -68,7 +71,7 @@ function Login() {
       >
         Ainda não tenho conta
       </button>
-      <div data-testid="common_login__element-invalid-email" />
+      <div data-testid="common_login__element-invalid-email">{errorMessage}</div>
     </>
   );
 }
