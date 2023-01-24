@@ -1,12 +1,12 @@
 const express = require('express');
-const cors = require('cors')
+const cors = require('cors');
 
 require('express-async-errors');
 const login = require('./Routes/LoginRouter');
 const register = require('./Routes/registerRouter');
 
 const app = express();
-app.use(cors())
+app.use(cors());
 
 app.use(express.json());
 
