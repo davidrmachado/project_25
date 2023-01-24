@@ -1,11 +1,13 @@
 const express = require('express');
 const cards = require('./Routes/cardsRouter');
  require('express-async-errors');
+const cors = require('cors');
 const login = require('./Routes/LoginRouter');
 const register = require('./Routes/registerRouter');
 const error = require('../utils/errorHandle');
 
 const app = express();
+app.use(cors());
 
 app.use(express.json());
 
