@@ -1,7 +1,7 @@
 const errorHandle = {
     404: {
         status: 404,
-        message: 'Not FOund',
+        message: 'Not Found',
     },
     409: {
         status: 409,
