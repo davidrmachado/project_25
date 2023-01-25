@@ -8,7 +8,7 @@ const newUser = async (obj) => {
     const response = await User
     .findOne({ where: { [Op.or]: [{ email: obj.email }, { name: obj.name }] } });
     if (response) throw throwError;
-     await User.create({ ...obj, password: senha, role: 'customer' });
+  await User.create({ ...obj, password: senha, role: 'customer' });
      return 'Created';
 };
 
