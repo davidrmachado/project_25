@@ -52,3 +52,11 @@
     transform: rotate(-10deg);
   }
 }
+
+.navbar {
+  align-items: center;
+  background-color: #23d131;
+  color: black;
+  display: flex;
+  justify-content: space-between;
+}

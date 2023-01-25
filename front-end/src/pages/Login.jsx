@@ -18,7 +18,9 @@ function Login() {
         password: inputPassword,
       });
 
-      console.log(response);
+      delete response.data.id;
+      localStorage.setItem('user', JSON.stringify(response.data));
+
       history.push('/customer/products');
     } catch (err) {
       console.log(err);
@@ -33,6 +35,10 @@ function Login() {
       setIsDisabled(true);
     }
   }, [inputEmail, inputPassword]);
+
+  useEffect(() => {
+    localStorage.removeItem('user');
+  }, []);
 
   return (
     <>
