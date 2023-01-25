@@ -13,5 +13,4 @@ services:
     - 3306:3306
     - 33060:33060
     environment:
-      MYSQL_ROOT_PASSWORD: password
-      MYSQL_DATABASE: delivery-app
+      MYSQL_ROOT_PASSWORD: 123456
