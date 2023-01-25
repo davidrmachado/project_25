@@ -19,7 +19,7 @@ function Login() {
       });
 
       delete response.data.id;
-      localStorage.setItem('userData', JSON.stringify(response.data));
+      localStorage.setItem('user', JSON.stringify(response.data));
 
       history.push('/customer/products');
     } catch (err) {
@@ -37,8 +37,8 @@ function Login() {
   }, [inputEmail, inputPassword]);
 
   useEffect(() => {
-    localStorage.removeItem('userData');
-  });
+    localStorage.removeItem('user');
+  }, []);
 
   return (
     <>
