@@ -1,11 +1,14 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 
-function clearStorage() {
-  localStorage.clear();
-}
-
 function Navbar() {
+  const [userName, setUserName] = useState('');
+
+  useEffect(() => {
+    const user = JSON.parse(localStorage.getItem('user'));
+    setUserName(user.name);
+  }, []);
+
   return (
     <nav className="navbar">
       <Link
@@ -24,12 +27,11 @@ function Navbar() {
         data-testid="customer_products__element-navbar-user-full-name"
         to="/userProfile"
       >
-        Usuário
+        { userName }
       </div>
       <Link
         data-testid="customer_products__element-navbar-link-logout"
         to="/login"
-        onClick={ clearStorage }
       >
         Sair
       </Link>
