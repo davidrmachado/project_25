@@ -1,8 +1,11 @@
-const { Sale, SaleProduct, Product } = require('../../database/models');
+const { Sale, SaleProduct, Product, User } = require('../../database/models');
 
-const obj = (address, user) => ({
+const SALE = 'sale_id';
+const PRODUCT = 'product_id';
+
+const obj = (address, user, sellerId) => ({
     userId: user.id,
-    sellerId: user.id,
+    sellerId,
     totalPrice: address.totalPrice,
     deliveryAddress: address.deliveryAddress,
     deliveryNumber: address.deliveryNumber,
@@ -11,7 +14,8 @@ const obj = (address, user) => ({
 });
 
 const create = async (objInfo, user) => {
-    const newObj = obj(objInfo, user); 
+    const { dataValues } = await User.findOne({ where: { name: objInfo.nameSeller } });
+    const newObj = obj(objInfo, user, Number(dataValues.id)); 
     const { dataValues: { id } } = await Sale.create({ ...newObj });
   return Number(id);
 };
@@ -20,9 +24,6 @@ const findOne = async (column, search) => {
     const { dataValues: { id } } = await Product.findOne({ where: { [column]: search } });
     return Number(id);
 };
-
-const SALE = 'sale_id';
-const PRODUCT = 'product_id';
 
 const createSale = async (objInfo, user) => {
     try {
