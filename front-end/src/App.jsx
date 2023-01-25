@@ -2,6 +2,8 @@ import React from 'react';
 import { BrowserRouter, Route, Redirect } from 'react-router-dom';
 import './App.css';
 import Login from './pages/Login';
+import Register from './pages/Register';
+import Products from './pages/Products';
 
 function App() {
   return (
@@ -9,7 +11,9 @@ function App() {
       <Route exact path="/" component={ Login }>
         <Redirect to="/login" />
       </Route>
-      <Route exact path="/login" component={ Login } />
+      <Route path="/login" component={ Login } />
+      <Route path="/register" component={ Register } />
+      <Route path="/customer/products" component={ Products } />
     </BrowserRouter>
   );
 }

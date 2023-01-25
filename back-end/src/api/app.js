@@ -1,12 +1,15 @@
 const express = require('express');
+require('express-async-errors');
+const cors = require('cors');
 const cards = require('./Routes/cardsRouter');
- require('express-async-errors');
 const login = require('./Routes/LoginRouter');
 const register = require('./Routes/registerRouter');
 const error = require('../utils/errorHandle');
 const sale = require('./Routes/saleRouter');
 
 const app = express();
+app.use(cors());
+app.use(express.static('public'));
 
 app.use(express.json());
 

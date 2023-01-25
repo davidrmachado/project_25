@@ -1,51 +1,62 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import api from '../utils/APILink';
 import { validateEmail, validatePassword } from '../utils/verifyInputData';
+import api from '../utils/APILink';
 
-function Login() {
+function Register() {
   const [inputPassword, setInputPassword] = useState('');
   const [inputEmail, setInputEmail] = useState('');
+  const [inputName, setInputName] = useState('');
   const [isDisabled, setIsDisabled] = useState(true);
   const [errorMessage, setErrorMessage] = useState('');
   const history = useHistory();
 
-  const login = async () => {
+  const validateName = () => {
+    const minNameLength = 12;
+    return inputName.length >= minNameLength;
+  };
+
+  const register = async () => {
     try {
-      const response = await api.post('/login', {
+      const response = await api.post('/register', {
+        name: inputName,
         email: inputEmail,
         password: inputPassword,
       });
 
-      delete response.data.id;
-      localStorage.setItem('user', JSON.stringify(response.data));
-
+      console.log(response);
       history.push('/customer/products');
     } catch (err) {
       console.log(err);
-      setErrorMessage(err.message);
+      setErrorMessage('Erro no cadastro');
     }
   };
 
   useEffect(() => {
-    if (validateEmail(inputEmail) && validatePassword(inputPassword)) {
+    if (validateEmail(inputEmail) && validatePassword(inputPassword) && validateName()) {
       setIsDisabled(false);
     } else {
       setIsDisabled(true);
     }
-  }, [inputEmail, inputPassword]);
-
-  useEffect(() => {
-    localStorage.removeItem('user');
-  }, []);
+  }, [inputEmail, inputPassword, inputName]);
 
   return (
     <>
+      <label htmlFor="name-input">
+        Nome
+        <input
+          data-testid="common_register__input-name"
+          id="name-input"
+          type="text"
+          value={ inputName }
+          onChange={ (e) => setInputName(e.target.value) }
+        />
+      </label>
       <label htmlFor="email-input">
         Email
         <input
-          data-testid="common_login__input-email"
+          data-testid="common_register__input-email"
           id="email-input"
           type="text"
           value={ inputEmail }
@@ -55,7 +66,7 @@ function Login() {
       <label htmlFor="password-input">
         Senha
         <input
-          data-testid="common_login__input-password"
+          data-testid="common_register__input-password"
           id="password-input"
           type="text"
           value={ inputPassword }
@@ -64,22 +75,15 @@ function Login() {
       </label>
       <button
         type="button"
-        data-testid="common_login__button-login"
+        data-testid="common_register__button-register"
         disabled={ isDisabled }
-        onClick={ login }
+        onClick={ register }
       >
-        Login
+        Cadastrar
       </button>
-      <button
-        type="button"
-        data-testid="common_login__button-register"
-        onClick={ () => history.push('/register') }
-      >
-        Ainda não tenho conta
-      </button>
-      <div data-testid="common_login__element-invalid-email">{errorMessage}</div>
+      <div data-testid="common_register__element-invalid_register">{errorMessage}</div>
     </>
   );
 }
 
-export default Login;
+export default Register;
