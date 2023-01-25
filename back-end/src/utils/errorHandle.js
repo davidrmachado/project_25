@@ -7,6 +7,7 @@ const errorHandle = {
         status: 409,
         message: 'Conflict',
     },
+    401: { status: 401, message: 'Expired or invalid token' },
 };
 
 module.exports = errorHandle;
