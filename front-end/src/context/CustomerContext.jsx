@@ -1,4 +1,4 @@
-import { useState, useEffect, createContext, useMemo } from 'react';
+import { useState, useEffect, useMemo, createContext } from 'react';
 import PropTypes from 'prop-types';
 import api from '../utils/apiURL';
 
@@ -6,6 +6,10 @@ export const CustomerContext = createContext();
 
 function CustomerProvider({ children }) {
   const [products, setProducts] = useState([]);
+  const [cart, setCart] = useState([]);
+
+  const providerData = useMemo(() => (
+    { cart, setCart, products, setProducts }), [products, cart]);
 
   useEffect(() => {
     const getProducts = async () => {
@@ -13,16 +17,15 @@ function CustomerProvider({ children }) {
       response.data.forEach((product) => {
         product.quantity = 0;
       });
+
       setProducts(response.data);
     };
 
     getProducts();
   }, []);
 
-  const productsStateVariables = useMemo(() => ({ products, setProducts }), [products]);
-
   return (
-    <CustomerContext.Provider value={ productsStateVariables }>
+    <CustomerContext.Provider value={ providerData }>
       { children }
     </CustomerContext.Provider>
   );
