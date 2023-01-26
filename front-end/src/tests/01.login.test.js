@@ -72,48 +72,21 @@ describe('Testes da tela de Login:', () => {
     expect(loginBtn).toBeEnabled();
   });
 
-  // it('05. Um usuário válido acessa a página de produtos', async () => {
-  //   const { history } = renderWithRouter(<App />);
-  //   history.push('/login');
-  //   jest.mock('axios');
+  it('05. Um usuário válido acessa a página de produtos', async () => {
+    const { history } = renderWithRouter(<App />);
+    history.push('/login');
 
-  //   axios.default.post = jest.fn().mockResolvedValue(
-  //     {
-  //       data: {
-  //         id: 3,
-  //         name: 'Cliente Zé Birita',
-  //         email: 'zebirita@email.com',
-  //         role: 'customer',
-  //         token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9',
-  //       },
-  //     },
-  //   );
-
-  //   const inputEmail = screen.getByTestId(INPUT_EMAIL);
-  //   const inputPass = screen.getByTestId(INPUT_PASSWORD);
-  //   const loginBtn = screen.getByTestId(BUTTON_LOGIN);
-
-  //   userEvent.type(inputEmail, 'zebirita@email.com');
-  //   userEvent.type(inputPass, '$#zebirita#$');
-
-  //   expect(loginBtn).toBeEnabled();
-
-  //   userEvent.click(loginBtn);
-
-  //   waitFor(() => {
-  //     // console.log(history);
-  //     expect(history.location.pathname).toBe('/costumer/proucts');
-  //     expect(screen.findByTestId('common_register__input-name'));
-  //   }, { timeout: 2500 });
-  // });
-
-  it('06. Uma mensagem é exibida se os dados informados estão errados', async () => {
-    const { history } = renderWithRouter(<Login />);
-    jest.mock('axios');
-
-    const message = 'Request failed with status code 404';
-
-    axios.default.post = await jest.fn().mockRejectedValue(new Error(message));
+    axios.default.post = jest.fn().mockResolvedValue(
+      {
+        data: {
+          id: 3,
+          name: 'Cliente Zé Birita',
+          email: 'zebirita@email.com',
+          role: 'customer',
+          token: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9',
+        },
+      },
+    );
 
     const inputEmail = screen.getByTestId(INPUT_EMAIL);
     const inputPass = screen.getByTestId(INPUT_PASSWORD);
@@ -128,8 +101,35 @@ describe('Testes da tela de Login:', () => {
 
     waitFor(() => {
       // console.log(history);
-      expect(history.location.pathname).toBe('/login');
-      // expect(screen.findByTestId('common_register__input-name'));
+      expect(history.location.pathname).toBe('/costumer/proucts');
+      expect(screen.findByTestId('common_register__input-name'));
     }, { timeout: 2500 });
   });
+
+  // it('06. Uma mensagem é exibida se os dados informados estão errados', async () => {
+  //   const { history } = renderWithRouter(<Login />);
+
+  //   jest.mock('axios');
+
+  //   const message = 'Request failed with status code 404';
+
+  //   axios.default.post = await jest.fn().mockRejectedValue(Error(message));
+
+  //   const inputEmail = screen.getByTestId(INPUT_EMAIL);
+  //   const inputPass = screen.getByTestId(INPUT_PASSWORD);
+  //   const loginBtn = screen.getByTestId(BUTTON_LOGIN);
+
+  //   userEvent.type(inputEmail, 'zebirita@email.com');
+  //   userEvent.type(inputPass, '$#zebirita#$');
+
+  //   expect(loginBtn).toBeEnabled();
+
+  //   userEvent.click(loginBtn);
+
+  //   waitFor(() => {
+  //     // console.log(history);
+  //     expect(history.location.pathname).toBe('/login');
+  //     // expect(screen.findByTestId('common_register__input-name'));
+  //   }, { timeout: 2500 });
+  // });
 });
