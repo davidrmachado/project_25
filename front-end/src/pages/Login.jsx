@@ -58,6 +58,7 @@ function Login() {
           data-testid="common_login__input-password"
           id="password-input"
           type="text"
+          // type="password"
           value={ inputPassword }
           onChange={ (e) => setInputPassword(e.target.value) }
         />
