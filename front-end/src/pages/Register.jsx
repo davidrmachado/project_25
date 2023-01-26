@@ -2,7 +2,7 @@
 import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { validateEmail, validatePassword } from '../utils/verifyInputData';
-import api from '../utils/APILink';
+import api from '../utils/apiURL';
 
 function Register() {
   const [inputPassword, setInputPassword] = useState('');
