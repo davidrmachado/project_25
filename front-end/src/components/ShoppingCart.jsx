@@ -72,7 +72,7 @@ export default function ShoppingCart() {
                   type="button"
                   id="deleteBtn"
                   data-testid={ `customer_checkout__element-order-table-remove-${index}` }
-                  onClick={ removeFromCart }
+                  onClick={ () => removeFromCart(product.id) }
                 >
                   Remover
                 </button>
