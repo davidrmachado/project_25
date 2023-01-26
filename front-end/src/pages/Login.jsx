@@ -19,6 +19,7 @@ function Login() {
       });
 
       delete response.data.id;
+      console.log(response);
       localStorage.setItem('user', JSON.stringify(response.data));
 
       history.push('/customer/products');

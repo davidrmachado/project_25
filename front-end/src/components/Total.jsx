@@ -4,10 +4,7 @@ import { CustomerContext } from '../context/CustomerContext';
 
 function Total() {
   const navigate = useHistory();
-  const { cart } = useContext(CustomerContext);
-
-  const total = cart && cart.map((product) => product.price * product.quantity)
-    .reduce((acc, cur) => acc + cur, 0).toFixed(2).replace('.', ',');
+  const { cart, totalValue } = useContext(CustomerContext);
 
   return (
     <div>
@@ -19,7 +16,7 @@ function Total() {
       >
         Meu Carrinho: R$
         <p data-testid="customer_products__checkout-bottom-value">
-          {`${total || 0}`}
+          { totalValue }
         </p>
       </button>
     </div>
