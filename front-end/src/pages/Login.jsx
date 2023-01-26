@@ -1,7 +1,7 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
-import api from '../utils/APILink';
+import api from '../utils/apiURL';
 import { validateEmail, validatePassword } from '../utils/verifyInputData';
 
 function Login() {

@@ -1,14 +1,16 @@
 import { useContext } from 'react';
-import PropTypes from 'prop-types';
-import { useNavigate } from 'react-router-dom';
-import AppContext from '../../context/app.context';
+import { useHistory } from 'react-router-dom';
+import { CustomerContext } from '../context/CustomerContext';
 
-function Total(props) {
-  const { buttonEnable } = props;
-  const navigate = useNavigate();
+function Total() {
+  const navigate = useHistory();
+  const { products } = useContext(CustomerContext);
 
   const total = products && products.map((product) => product.price * product.quantity)
     .reduce((acc, cur) => acc + cur, 0).toFixed(2).replace('.', ',');
+  const buttonEnable = false;
+
+  console.log(total);
 
   return (
     buttonEnable
@@ -37,8 +39,8 @@ function Total(props) {
   );
 }
 
-TotalAmount.propTypes = {
+/* TotalAmount.propTypes = {
   buttonEnable: PropTypes.bool,
-}.isrequired;
+}.isrequired; */
 
 export default Total;
