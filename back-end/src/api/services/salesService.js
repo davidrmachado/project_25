@@ -41,4 +41,9 @@ const createSale = async (objInfo, user) => {
     }
 };
 
-module.exports = { createSale };
+const sellers = async () => {
+    const vendedores = await User.findAll({ where: { role: 'seller' } });
+    return vendedores;
+};
+
+module.exports = { createSale, sellers };

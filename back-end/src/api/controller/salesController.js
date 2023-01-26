@@ -1,4 +1,4 @@
-const { createSale } = require('../services/salesService');
+const { createSale, sellers } = require('../services/salesService');
 
 const saleController = async (req, res) => {
     const arrayProducts = req.body;
@@ -8,4 +8,9 @@ const saleController = async (req, res) => {
 return res.status(201).json({ message: result });
 };
 
-module.exports = { saleController };
+const sellersController = async (req, res) => {
+    const response = await sellers();
+    return res.status(200).json(response);
+};
+
+module.exports = { saleController, sellersController };
