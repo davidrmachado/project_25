@@ -26,8 +26,4 @@ function Total() {
   );
 }
 
-/* TotalAmount.propTypes = {
-  buttonEnable: PropTypes.bool,
-}.isrequired; */
-
 export default Total;
