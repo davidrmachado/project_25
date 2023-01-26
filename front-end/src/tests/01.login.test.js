@@ -110,7 +110,10 @@ describe('Testes da tela de Login:', () => {
   it('06. Uma mensagem é exibida se os dados informados estão errados', async () => {
     const { history } = renderWithRouter(<Login />);
     jest.mock('axios');
-    axios.default.post = await jest.fn().mockRejectedValue(new Error('Request failed with status code 404'));
+
+    const message = 'Request failed with status code 404';
+
+    axios.default.post = await jest.fn().mockRejectedValue(new Error(message));
 
     const inputEmail = screen.getByTestId(INPUT_EMAIL);
     const inputPass = screen.getByTestId(INPUT_PASSWORD);
