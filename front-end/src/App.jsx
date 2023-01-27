@@ -6,6 +6,7 @@ import Login from './pages/Login';
 import Register from './pages/Register';
 import Products from './pages/Products';
 import Checkout from './pages/Checkout';
+import Details from './pages/Orders';
 import OrderDetails from './pages/OrderDetails';
 
 import './App.css';
@@ -21,6 +22,7 @@ function App() {
       <CustomerProvider>
         <Route path="/customer/products" component={ Products } />
         <Route path="/customer/checkout" component={ Checkout } />
+        <Route exact path="/customer/orders" component={ Details } />
         <Route path="/customer/orders/:id" component={ OrderDetails } />
       </CustomerProvider>
     </BrowserRouter>
