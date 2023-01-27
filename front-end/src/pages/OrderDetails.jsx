@@ -1,34 +1,29 @@
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router';
+import moment from 'moment/moment';
+
+import api from '../utils/apiURL';
 import Navbar from '../components/Navbar';
+import ShoppingCart from '../components/ShoppingCart';
 
 function OrderDetails() {
   const { id } = useParams();
-  const [orderDetails, setOrderDetails] = useState({});
+  const [order, setOrder] = useState({});
 
   const prefix = 'customer_order_details__';
   const orderNumberLength = 4;
 
   useEffect(() => {
-    const order = {
-      seller: 'Fulana Pereira',
-      sale_date: '07/04/2022',
-      status: 'Entregue',
-      total_price: 'R$ 100,00',
-      products: [
-        {
-          name: 'Skol Lata 250ml',
-          quantity: 10,
-        },
-        {
-          name: 'Heineken 600ml',
-          quantity: 10,
-        },
-      ],
+    const getOrder = async () => {
+      const response = await api.get(`/sale/${id}`);
+      setOrder(response.data);
     };
-
-    setOrderDetails(order);
+    getOrder();
   }, []);
+
+  useEffect(() => {
+    console.log('objeto vindo de orderDetails:', order.products);
+  }, [order]);
 
   return (
     <>
@@ -43,19 +38,28 @@ function OrderDetails() {
         <p
           data-testid={ `${prefix}element-order-details-label-seller-name` }
         >
-          {`P. Vend: ${orderDetails.seller}`}
+          {/* {`P. Vend: ${order.seller.name}`} */}
         </p>
         <p
           data-testid={ `${prefix}element-order-details-label-order-date` }
         >
-          {`Data: ${orderDetails.sale_date}`}
+          { moment(`${order.saleDate}`).format('DD/MM/YYYY') }
         </p>
         <div
-          data-testid={ `${prefix}element-order-details-label-delivery-status<index>` }
+          data-testid={
+            `${prefix}element-order-details-label-delivery-status${order.id}`
+          }
         >
-          {orderDetails.stauts}
+          {order.status}
         </div>
+        <button
+          data-testid="customer_order_details__button-delivery-check"
+          type="button"
+        >
+          Marcar como entregue
+        </button>
       </div>
+      <ShoppingCart products={ order.products } />
     </>
   );
 }

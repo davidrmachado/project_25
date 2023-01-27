@@ -1,20 +1,28 @@
-import React, { useContext } from 'react';
+import { useContext } from 'react';
+import PropTypes from 'prop-types';
 import { CustomerContext } from '../context/CustomerContext';
 
-export default function ShoppingCart() {
-  const { cart, setCart } = useContext(CustomerContext);
-
+export default function ShoppingCart({ products = [], buttonEnabled = false }) {
+  const { setCart } = useContext(CustomerContext);
   const fixNumberFormat = (number) => number.toFixed(2).toString().replace('.', ',');
 
   const totalValue = () => {
-    const total = cart.reduce((acc, curr) => acc + curr.quantity * curr.price, 0);
+    let total = 0;
+    if (buttonEnabled) {
+      total = products.reduce((acc, curr) => acc + curr.quantity * curr.price, 0);
+    } else {
+      total = products.reduce((acc, curr) => acc + curr.SaleProduct.quantity
+      * Number(curr.price), 0);
+    }
     return fixNumberFormat(total);
   };
 
   const removeFromCart = (id) => {
-    const newCart = cart.filter((item) => item.id !== id);
+    const newCart = products.filter((item) => item.id !== id);
     setCart(newCart);
   };
+
+  console.log('array que chegou no shopping cart :', products);
 
   const itemNumber = 'customer_checkout__element-order-table-item-number';
   const unitPrice = 'customer_checkout__element-order-table-unit-price';
@@ -31,11 +39,11 @@ export default function ShoppingCart() {
             <th>Quantidade</th>
             <th>Valor unitário</th>
             <th>Sub-total</th>
-            <th>Remover item</th>
+            { buttonEnabled ? <th>Remover item</th> : <div /> }
           </tr>
         </thead>
         <tbody>
-          { cart.map((product, index) => (
+          { products.map((product, index) => (
             <tr key={ product.id }>
               <td
                 data-testid={ `${itemNumber}-${index}` }
@@ -64,19 +72,26 @@ export default function ShoppingCart() {
               <td
                 data-testid={ `${subTotal}-${index}` }
               >
-                {fixNumberFormat(Number(product.price * product.quantity))}
+                { buttonEnabled ? (
+                  fixNumberFormat(Number(product.price * product.quantity))
+                ) : (
+                  fixNumberFormat(Number(product.price * product.SaleProduct.quantity))
+                ) }
               </td>
 
-              <td>
-                <button
-                  type="button"
-                  id="deleteBtn"
-                  data-testid={ `customer_checkout__element-order-table-remove-${index}` }
-                  onClick={ () => removeFromCart(product.id) }
-                >
-                  Remover
-                </button>
-              </td>
+              { buttonEnabled ? (
+                <td>
+                  <button
+                    type="button"
+                    id="deleteBtn"
+                    data-testid={
+                      `customer_checkout__element-order-table-remove-${index}`
+                    }
+                    onClick={ () => removeFromCart(product.id) }
+                  >
+                    Remover
+                  </button>
+                </td>) : <div /> }
             </tr>
           )) }
         </tbody>
@@ -89,3 +104,8 @@ export default function ShoppingCart() {
     </section>
   );
 }
+
+ShoppingCart.propTypes = {
+  products: PropTypes.array,
+  buttonEnabled: PropTypes.bool,
+}.isRequired;
