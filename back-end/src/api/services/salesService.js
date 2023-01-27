@@ -46,4 +46,25 @@ const sellers = async () => {
     return vendedores;
 };
 
-module.exports = { createSale, sellers };
+const salesProdutcts = async () => {
+    const salesAndProducts = await Sale.findAll({
+        attributes: { exclude: ['user_id', 'seller_id', 'sellerId', 'userId'] },
+     include: [{ model: User, as: 'seller', attributes: { exclude: ['password', 'email'] } },
+    { model: Product, as: 'products', through: { attributes: ['quantity'] } }] });
+    return salesAndProducts;
+};
+
+const salesProdutctsId = async (id) => {
+    const salesAndProducts = await Sale.findOne({
+        where: { id },
+        attributes: { exclude: ['user_id', 'seller_id', 'sellerId', 'userId'] },
+     include: [{ model: User, as: 'seller', attributes: { exclude: ['password', 'email'] } },
+    { model: Product, as: 'products', through: { attributes: ['quantity'] } }] });
+    return salesAndProducts;
+};
+
+module.exports = { 
+    createSale, 
+    sellers, 
+    salesProdutcts,
+    salesProdutctsId };

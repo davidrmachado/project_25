@@ -17,17 +17,16 @@ module.exports = (sequelize, DataTypes) => {
 
     User.associate = (models) => {
         User.hasMany(models.Sale, {
+            as: 'users',
             foreignKey: 'user_id',
-            as: 'user',
+        })
+
+        User.hasMany(models.Sale, {
+            as: 'sellers',
+            foreignKey: 'seller_id',
         })
     }
 
-    User.associate = (models) => {
-        User.hasMany(models.Sale, {
-            foreignKey: 'seller_id',
-            as: 'seller',
-        })
-    }
 
     return User;
 };
