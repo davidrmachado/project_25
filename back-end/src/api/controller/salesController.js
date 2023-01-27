@@ -1,4 +1,8 @@
-const { createSale, sellers } = require('../services/salesService');
+const { 
+    createSale, 
+    sellers, 
+    salesProdutcts, 
+    salesProdutctsId } = require('../services/salesService');
 
 const saleController = async (req, res) => {
     const arrayProducts = req.body;
@@ -13,4 +17,19 @@ const sellersController = async (req, res) => {
     return res.status(200).json(response);
 };
 
-module.exports = { saleController, sellersController };
+const salesProductsController = async (req, res) => {
+    const response = await salesProdutcts();
+    return res.status(200).json(response);
+};
+
+const salesProductsIdController = async (req, res) => {
+    const { id } = req.params;
+    const response = await salesProdutctsId(id);
+    return res.status(200).json(response);
+};
+
+module.exports = { 
+    saleController, 
+    sellersController,
+     salesProductsController,
+    salesProductsIdController };
