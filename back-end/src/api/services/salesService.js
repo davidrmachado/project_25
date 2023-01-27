@@ -63,8 +63,13 @@ const salesProdutctsId = async (id) => {
     return salesAndProducts;
 };
 
+const allSales = async () => Sale.findAll({
+    attributes: { exclude: ['user_id', 'seller_id', 'userId', 'sellerId'] },
+});
+
 module.exports = { 
     createSale, 
     sellers, 
     salesProdutcts,
-    salesProdutctsId };
+    salesProdutctsId,
+    allSales };
