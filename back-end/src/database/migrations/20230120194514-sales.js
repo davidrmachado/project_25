@@ -24,7 +24,7 @@ module.exports = {
     total_price: Sequelize.DECIMAL(9,2),
     delivery_address: Sequelize.STRING,
     delivery_number: Sequelize.STRING,
-    sales_date: Sequelize.DATE,
+    sale_date: Sequelize.DATE,
     status: Sequelize.STRING,
   }, {timestamps: false})
   },

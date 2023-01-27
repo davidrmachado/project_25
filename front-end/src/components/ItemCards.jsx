@@ -2,7 +2,11 @@ import React, { useContext } from 'react';
 import { CustomerContext } from '../context/CustomerContext';
 
 function ItemCard() {
-  const { products, setProducts, cart, setCart } = useContext(CustomerContext);
+  const {
+    products,
+    setProducts,
+    cart,
+    setCart } = useContext(CustomerContext);
 
   const updateCart = (product) => {
     const isInCart = cart.some((item) => item.id === product.id);
