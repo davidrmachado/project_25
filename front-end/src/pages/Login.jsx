@@ -19,10 +19,15 @@ function Login() {
       });
 
       delete response.data.id;
-      console.log(response);
       localStorage.setItem('user', JSON.stringify(response.data));
 
-      history.push('/customer/products');
+      if (response.data.role === 'customer') {
+        history.push('/customer/products');
+      }
+
+      if (response.data.role === 'seller') {
+        history.push('/seller/orders');
+      }
     } catch (err) {
       console.log(err);
       setErrorMessage(err.message);

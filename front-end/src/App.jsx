@@ -4,10 +4,11 @@ import CustomerProvider from './context/CustomerContext';
 
 import Login from './pages/Login';
 import Register from './pages/Register';
-import Products from './pages/Products';
-import Checkout from './pages/Checkout';
-import Details from './pages/Orders';
-import OrderDetails from './pages/OrderDetails';
+import Products from './pages/Customer/Products';
+import Checkout from './pages/Customer/Checkout';
+import Details from './pages/Customer/CustomerOrders';
+import OrderDetails from './pages/Customer/OrderDetails';
+import SellerOrders from './pages/Seller/SellerOrders';
 
 import './App.css';
 
@@ -25,6 +26,7 @@ function App() {
         <Route exact path="/customer/orders" component={ Details } />
         <Route path="/customer/orders/:id" component={ OrderDetails } />
       </CustomerProvider>
+      <Route path="/seller/orders" component={ SellerOrders } />
     </BrowserRouter>
   );
 }
