@@ -46,7 +46,7 @@ function OrderDetails() {
           {`P. Vend: ${orderDetails.seller}`}
         </p>
         <p
-          data-testid={ dateTestId }
+          data-testid={ `${prefix}element-order-details-label-order-date` }
         >
           {`Data: ${orderDetails.sale_date}`}
         </p>
