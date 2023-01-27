@@ -9,12 +9,12 @@ const obj = (address, user, sellerId) => ({
     totalPrice: address.totalPrice,
     deliveryAddress: address.deliveryAddress,
     deliveryNumber: address.deliveryNumber,
-    salesDate: new Date(),
+    saleDate: new Date(),
     status: 'Pendente',
 });
 
 const create = async (objInfo, user) => {
-    const { dataValues } = await User.findOne({ where: { name: objInfo.nameSeller } });
+    const { dataValues } = await User.findOne({ where: { id: objInfo.sellerId } });
     const newObj = obj(objInfo, user, Number(dataValues.id)); 
     const { dataValues: { id } } = await Sale.create({ ...newObj });
   return Number(id);

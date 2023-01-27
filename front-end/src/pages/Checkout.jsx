@@ -1,4 +1,5 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect } from 'react';
+import { useHistory } from 'react-router-dom';
 
 import Navbar from '../components/Navbar';
 import ShoppingCart from '../components/ShoppingCart';
@@ -7,23 +8,48 @@ import api from '../utils/apiURL';
 import { CustomerContext } from '../context/CustomerContext';
 
 export default function Checkout() {
-  const [nameSeller, setNameSeller] = useState('fulana');
+  const [selectedSeller, setSelectedSeller] = useState(0);
   const [deliveryAddress, setDeliveryAddress] = useState('');
   const [deliveryNumber, setDeliveryNumber] = useState('');
+  const [sellers, setSellers] = useState([]);
   const { cart } = useContext(CustomerContext);
+  const navigate = useHistory();
 
   const finishOrder = async () => {
     const user = JSON.parse(localStorage.getItem('user'));
     const { token } = user;
 
     const orderData = {
+      totalPrice: cart.reduce((acc, curr) => acc + curr.quantity * curr.price, 0),
       deliveryAddress,
       deliveryNumber,
-      nameSeller,
+      sellerId: selectedSeller,
+      products: cart,
     };
 
-    const id = await api.post('/customers/orders', {});
+    console.log(orderData);
+
+    try {
+      const response = await api.post('/sale', orderData, {
+        headers: {
+          Authorization: token,
+        },
+      });
+      console.log(response);
+      navigate.push(`/customer/orders/${response.data.message}`);
+    } catch (err) {
+      console.log(err);
+    }
   };
+
+  useEffect(() => {
+    const getSellers = async () => {
+      const response = await api.get('/sale/sellers');
+      setSellers(response.data);
+      setSelectedSeller(response.data[0].id);
+    };
+    getSellers();
+  }, []);
 
   return (
     <main>
@@ -37,12 +63,12 @@ export default function Checkout() {
           <select
             id="seller"
             data-testid="customer_checkout__select-seller"
-            value={ nameSeller }
-            onChange={ (e) => setNameSeller(e.target.value) }
+            value={ selectedSeller }
+            onChange={ (e) => setSelectedSeller(e.target.value) }
           >
-            <option value="fulano">fulana</option>
-            <option value="ciclano">ciclano</option>
-            <option value="beltrano">beltrano</option>
+            { sellers.map((seller, index) => (
+              <option key={ index } value={ seller.id }>{ seller.name }</option>
+            )) }
           </select>
         </label>
 
