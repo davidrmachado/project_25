@@ -19,7 +19,7 @@ function OrderDetails() {
       setOrder(response.data);
     };
     getOrder();
-  }, []);
+  }, [id]);
 
   useEffect(() => {
     console.log('objeto vindo de orderDetails:', order.products);
@@ -59,7 +59,7 @@ function OrderDetails() {
           Marcar como entregue
         </button>
       </div>
-      <ShoppingCart products={ order.products } />
+      <ShoppingCart products={ order.products } prefix="customer_order_details" />
     </>
   );
 }

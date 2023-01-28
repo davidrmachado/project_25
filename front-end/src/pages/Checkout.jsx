@@ -55,7 +55,11 @@ export default function Checkout() {
     <main>
       <Navbar />
       <h2>Finalizar Pedido</h2>
-      <ShoppingCart products={ cart } buttonEnabled />
+      <ShoppingCart
+        products={ cart }
+        buttonEnabled
+        prefix="customer_checkout"
+      />
       <h2>Detalhes e Endereço para Entrega</h2>
       <form>
         <label htmlFor="seller">

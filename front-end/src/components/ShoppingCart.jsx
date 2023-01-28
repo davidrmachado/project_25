@@ -2,7 +2,7 @@ import { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { CustomerContext } from '../context/CustomerContext';
 
-export default function ShoppingCart({ products = [], buttonEnabled = false }) {
+export default function ShoppingCart({ products = [], buttonEnabled = false, prefix }) {
   const { setCart } = useContext(CustomerContext);
   const fixNumberFormat = (number) => number.toFixed(2).toString().replace('.', ',');
 
@@ -24,10 +24,6 @@ export default function ShoppingCart({ products = [], buttonEnabled = false }) {
 
   console.log('array que chegou no shopping cart :', products);
 
-  const itemNumber = 'customer_checkout__element-order-table-item-number';
-  const unitPrice = 'customer_checkout__element-order-table-unit-price';
-  const subTotal = 'customer_checkout__element-order-table-sub-total';
-
   return (
     <section>
       <h2> Meu Pedido </h2>
@@ -46,31 +42,31 @@ export default function ShoppingCart({ products = [], buttonEnabled = false }) {
           { products.map((product, index) => (
             <tr key={ product.id }>
               <td
-                data-testid={ `${itemNumber}-${index}` }
+                data-testid={ `${prefix}__element-order-table-item-number-${index}` }
               >
                 {index + 1}
               </td>
 
               <td
-                data-testid={ `customer_checkout__element-order-table-name-${index}` }
+                data-testid={ `${prefix}__element-order-table-name-${index}` }
               >
                 {product.name}
               </td>
 
               <td
-                data-testid={ `customer_checkout__element-order-table-quantity-${index}` }
+                data-testid={ `${prefix}__element-order-table-quantity-${index}` }
               >
                 {product.quantity}
               </td>
 
               <td
-                data-testid={ `${unitPrice}-${index}` }
+                data-testid={ `${prefix}__element-order-table-unit-price-${index}` }
               >
                 {fixNumberFormat(Number(product.price))}
               </td>
 
               <td
-                data-testid={ `${subTotal}-${index}` }
+                data-testid={ `${prefix}__element-order-table-sub-total-${index}` }
               >
                 { buttonEnabled ? (
                   fixNumberFormat(Number(product.price * product.quantity))
@@ -97,7 +93,7 @@ export default function ShoppingCart({ products = [], buttonEnabled = false }) {
         </tbody>
       </table>
       <div
-        data-testid="customer_checkout__element-order-total-price"
+        data-testid={ `${prefix}__element-order-total-price` }
       >
         { `Total: ${totalValue()}` }
       </div>
@@ -108,4 +104,5 @@ export default function ShoppingCart({ products = [], buttonEnabled = false }) {
 ShoppingCart.propTypes = {
   products: PropTypes.array,
   buttonEnabled: PropTypes.bool,
+  prefix: PropTypes.string,
 }.isRequired;
