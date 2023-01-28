@@ -43,8 +43,10 @@ function Login() {
   }, [inputEmail, inputPassword]);
 
   useEffect(() => {
-    localStorage.removeItem('user');
-  }, []);
+    if (localStorage.getItem('user')) {
+      history.push('/customer/products');
+    }
+  });
 
   return (
     <>

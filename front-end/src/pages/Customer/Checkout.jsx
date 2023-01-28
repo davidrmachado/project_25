@@ -27,7 +27,7 @@ export default function Checkout() {
       products: cart,
     };
 
-    console.log(orderData);
+    console.log('fiz a compra, aqui estão os produtos:', orderData);
 
     try {
       const response = await api.post('/sale', orderData, {
@@ -55,7 +55,11 @@ export default function Checkout() {
     <main>
       <Navbar />
       <h2>Finalizar Pedido</h2>
-      <ShoppingCart />
+      <ShoppingCart
+        products={ cart }
+        buttonEnabled
+        prefix="customer_checkout"
+      />
       <h2>Detalhes e Endereço para Entrega</h2>
       <form>
         <label htmlFor="seller">
