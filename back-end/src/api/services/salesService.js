@@ -51,8 +51,8 @@ const salesProdutcts = async () => {
         attributes: { exclude: ['user_id', 'seller_id', 'sellerId', 'userId'] },
         include: [
             { model: User, as: 'seller', attributes: { exclude: ['password', 'email'] } },
-            { model: Product, as: 'products', through: { attributes: ['quantity'] } }
-        ] 
+            { model: Product, as: 'products', through: { attributes: ['quantity'] } },
+        ], 
     });
     return salesAndProducts;
 };
@@ -63,8 +63,8 @@ const salesProdutctsId = async (id) => {
         attributes: { exclude: ['user_id', 'seller_id', 'sellerId', 'userId'] },
         include: [
             { model: User, as: 'seller', attributes: { exclude: ['password', 'email'] } },
-            { model: Product, as: 'products', through: { attributes: ['quantity'] } }
-        ] 
+            { model: Product, as: 'products', through: { attributes: ['quantity'] } },
+        ], 
     });
     return salesAndProducts;
 };
