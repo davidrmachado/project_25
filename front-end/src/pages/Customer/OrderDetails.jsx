@@ -16,14 +16,11 @@ function OrderDetails() {
   useEffect(() => {
     const getOrder = async () => {
       const response = await api.get(`/sale/${id}`);
+      response.data.sellerName = response.data.seller.name;
       setOrder(response.data);
     };
     getOrder();
   }, [id]);
-
-  useEffect(() => {
-    console.log('objeto vindo de orderDetails:', order.products);
-  }, [order]);
 
   return (
     <>
@@ -38,7 +35,7 @@ function OrderDetails() {
         <p
           data-testid={ `${prefix}element-order-details-label-seller-name` }
         >
-          {/* {`P. Vend: ${order.seller.name}`} */}
+          {`P. Vend: ${order.sellerName}`}
         </p>
         <p
           data-testid={ `${prefix}element-order-details-label-order-date` }
@@ -55,6 +52,7 @@ function OrderDetails() {
         <button
           data-testid="customer_order_details__button-delivery-check"
           type="button"
+          disabled
         >
           Marcar como entregue
         </button>

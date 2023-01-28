@@ -35,7 +35,7 @@ export default function Checkout() {
           Authorization: token,
         },
       });
-      console.log(response);
+
       navigate.push(`/customer/orders/${response.data.message}`);
     } catch (err) {
       console.log(err);

@@ -22,8 +22,6 @@ export default function ShoppingCart({ products = [], buttonEnabled = false, pre
     setCart(newCart);
   };
 
-  console.log('array que chegou no shopping cart :', products);
-
   return (
     <section>
       <h2> Meu Pedido </h2>
@@ -35,7 +33,7 @@ export default function ShoppingCart({ products = [], buttonEnabled = false, pre
             <th>Quantidade</th>
             <th>Valor unitário</th>
             <th>Sub-total</th>
-            { buttonEnabled ? <th>Remover item</th> : <div /> }
+            { buttonEnabled ? <th>Remover item</th> : <td /> }
           </tr>
         </thead>
         <tbody>
@@ -87,7 +85,7 @@ export default function ShoppingCart({ products = [], buttonEnabled = false, pre
                   >
                     Remover
                   </button>
-                </td>) : <div /> }
+                </td>) : <td /> }
             </tr>
           )) }
         </tbody>
