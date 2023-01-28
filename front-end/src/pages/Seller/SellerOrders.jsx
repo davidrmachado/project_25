@@ -18,10 +18,6 @@ function SellerOrders() {
     getOrders();
   }, []);
 
-  useEffect(() => {
-    console.log(orders);
-  }, [orders]);
-
   return (
     <>
       <Navbar />

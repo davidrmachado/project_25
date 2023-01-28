@@ -17,10 +17,6 @@ function Orders() {
     getOrders();
   }, []);
 
-  useEffect(() => {
-    console.log(orders);
-  }, [orders]);
-
   return (
     <>
       <Navbar />
