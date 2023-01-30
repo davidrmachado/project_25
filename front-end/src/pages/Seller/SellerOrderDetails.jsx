@@ -32,11 +32,11 @@ function SellerOrderDetails() {
         >
           {`PEDIDO ${id.padStart(orderNumberLength, '0')}`}
         </p>
-        {/* <p
+        <p
           data-testid={ `${prefix}element-order-details-label-seller-name` }
         >
           {`P. Vend: ${order.sellerName}`}
-        </p> */}
+        </p>
         <p
           data-testid={ `${prefix}element-order-details-label-order-date` }
         >
@@ -52,7 +52,6 @@ function SellerOrderDetails() {
         <button
           data-testid="seller_order_details__button-preparing-check"
           type="button"
-          disabled
         >
           PREPARAR PEDIDO
         </button>
