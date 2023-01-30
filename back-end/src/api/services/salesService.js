@@ -73,9 +73,15 @@ const allSales = async () => Sale.findAll({
     attributes: { exclude: ['user_id', 'seller_id', 'userId', 'sellerId'] },
 });
 
+const update = async ({ status }, id) => {
+const updated = await Sale.update({ status }, { where: { id } });
+return updated;
+};
+
 module.exports = { 
     createSale, 
     sellers, 
     salesProdutcts,
     salesProdutctsId,
-    allSales };
+    allSales,
+    update };

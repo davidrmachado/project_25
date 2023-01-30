@@ -3,7 +3,8 @@ const {
     sellers, 
     salesProdutcts, 
     salesProdutctsId, 
-    allSales } = require('../services/salesService');
+    allSales, 
+    update } = require('../services/salesService');
 
 const saleController = async (req, res) => {
     const arrayProducts = req.body;
@@ -34,9 +35,17 @@ const allSalesController = async (req, res) => {
     return res.status(200).json(response);
 };
 
+const updateController = async (req, res) => {
+ const { id } = req.params;
+ const corpo = req.body;
+ const response = await update(corpo, id);
+ return res.status(200).json(response);
+};
+
 module.exports = { 
     saleController, 
     sellersController,
      salesProductsController,
     salesProductsIdController,
-    allSalesController };
+    allSalesController,
+    updateController };
