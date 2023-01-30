@@ -6,11 +6,11 @@ import api from '../../utils/apiURL';
 import Navbar from '../../components/Navbar';
 import ShoppingCart from '../../components/ShoppingCart';
 
-function OrderDetails() {
+function SellerOrderDetails() {
   const { id } = useParams();
   const [order, setOrder] = useState({});
 
-  const prefix = 'customer_order_details__';
+  const prefix = 'seller_order_details__';
   const orderNumberLength = 4;
 
   useEffect(() => {
@@ -50,16 +50,22 @@ function OrderDetails() {
           {order.status}
         </div>
         <button
-          data-testid="customer_order_details__button-delivery-check"
+          data-testid="seller_order_details__button-preparing-check"
+          type="button"
+        >
+          PREPARAR PEDIDO
+        </button>
+        <button
+          data-testid="seller_order_details__button-dispatch-check"
           type="button"
           disabled
         >
-          Marcar como entregue
+          SAIU PARA ENTREGA
         </button>
       </div>
-      <ShoppingCart products={ order.products } prefix="customer_order_details" />
+      <ShoppingCart products={ order.products } prefix="seller_order_details" />
     </>
   );
 }
 
-export default OrderDetails;
+export default SellerOrderDetails;

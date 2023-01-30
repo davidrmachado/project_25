@@ -28,6 +28,10 @@ function Login() {
       if (response.data.role === 'seller') {
         history.push('/seller/orders');
       }
+
+      if (response.data.role === 'administrator') {
+        history.push('/admin/manager');
+      }
     } catch (err) {
       console.log(err);
       setErrorMessage(err.message);

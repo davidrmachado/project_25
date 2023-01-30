@@ -91,6 +91,7 @@ function ItemCard() {
             data-testid={ `customer_products__img-card-bg-image-${product.id}` }
             src={ product.url_image }
             alt="product demo"
+            className="drink-image"
           />
           <h1
             data-testid={ `customer_products__element-card-title-${product.id}` }
