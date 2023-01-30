@@ -9,7 +9,11 @@ import Checkout from './pages/Customer/Checkout';
 import Details from './pages/Customer/CustomerOrders';
 import CustomerOrderDetails from './pages/Customer/CustomerOrderDetails';
 import SellerOrders from './pages/Seller/SellerOrders';
+<<<<<<< HEAD
 import SellerOrderDetails from './pages/Seller/SellerOrderDetails';
+=======
+import Manage from './pages/Admin/Manage';
+>>>>>>> ca47e766cf9c2a1297c7168e37a958e2942239f6
 
 import './App.css';
 
@@ -29,6 +33,7 @@ function App() {
         <Route path="/seller/orders/:id" component={ SellerOrderDetails } />
       </CustomerProvider>
       <Route path="/seller/orders" component={ SellerOrders } />
+      <Route path="/admin/manager" component={ Manage } />
     </BrowserRouter>
   );
 }
