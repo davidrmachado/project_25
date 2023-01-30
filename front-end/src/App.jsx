@@ -9,6 +9,7 @@ import Checkout from './pages/Customer/Checkout';
 import Details from './pages/Customer/CustomerOrders';
 import OrderDetails from './pages/Customer/OrderDetails';
 import SellerOrders from './pages/Seller/SellerOrders';
+import Manage from './pages/Admin/Manage';
 
 import './App.css';
 
@@ -27,6 +28,7 @@ function App() {
         <Route path="/customer/orders/:id" component={ OrderDetails } />
       </CustomerProvider>
       <Route path="/seller/orders" component={ SellerOrders } />
+      <Route path="/admin/manager" component={ Manage } />
     </BrowserRouter>
   );
 }
