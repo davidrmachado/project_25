@@ -6,7 +6,7 @@ import api from '../../utils/apiURL';
 import Navbar from '../../components/Navbar';
 import ShoppingCart from '../../components/ShoppingCart';
 
-function OrderDetails() {
+function CustomerOrderDetails() {
   const { id } = useParams();
   const [order, setOrder] = useState({});
 
@@ -62,4 +62,4 @@ function OrderDetails() {
   );
 }
 
-export default OrderDetails;
+export default CustomerOrderDetails;

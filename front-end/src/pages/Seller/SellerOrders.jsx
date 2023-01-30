@@ -24,7 +24,7 @@ function SellerOrders() {
       <div>
         { orders ? (
           orders.map((order) => (
-            <Link key={ order.id } to={ `/customer/orders/${order.id}` }>
+            <Link key={ order.id } to={ `/seller/orders/${order.id}` }>
               <p
                 data-testid={ `seller_orders__element-order-id-${order.id}` }
               >
