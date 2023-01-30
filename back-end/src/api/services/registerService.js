@@ -2,8 +2,8 @@ const { Op } = require('sequelize');
 const { User } = require('../../database/models');
 const hash = require('../../utils/hash');
 
+const throwError = { status: 409, message: 'Conflict' };
 const newUser = async (obj) => {
-    const throwError = { status: 409, message: 'Conflict' };
     const senha = hash(obj.password);
     const response = await User
         .findOne({ where: { [Op.or]: [{ email: obj.email }, { name: obj.name }] } });
@@ -12,4 +12,18 @@ const newUser = async (obj) => {
      return 'Created';
 };
 
-module.exports = { newUser };
+ const admUser = async (obj, user) => {
+    const errorAdm = { status: 403, message: 'User not Authorized' };
+    const response = await User
+    .findOne({ where: { [Op.or]: [{ email: obj.email }, { name: obj.name }] } });
+    console.log(response);
+    if (response) throw throwError;
+    if (user.role === 'administrator') {
+        const senha = hash(obj.password);
+        await User.create({ ...obj, password: senha });
+        return 'Created';
+    }
+    throw errorAdm;
+}; 
+
+module.exports = { newUser, admUser };

@@ -69,7 +69,6 @@ const allSales = async () => Sale.findAll({
 
 const update = async ({ status }, id) => {
 const updated = await Sale.update({ status }, { where: { id } });
-console.log(updated);
 return updated;
 };
 
