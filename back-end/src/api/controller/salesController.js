@@ -4,7 +4,7 @@ const {
     salesProdutcts, 
     salesProdutctsId, 
     allSales, 
-    update } = require('../services/salesService');
+    updateStatus } = require('../services/salesService');
 
 const saleController = async (req, res) => {
     const arrayProducts = req.body;
@@ -35,10 +35,10 @@ const allSalesController = async (req, res) => {
     return res.status(200).json(response);
 };
 
-const updateController = async (req, res) => {
+const updateStatusController = async (req, res) => {
  const { id } = req.params;
  const corpo = req.body;
- const response = await update(corpo, id);
+ const response = await updateStatus(corpo, id);
  return res.status(200).json(response);
 };
 
@@ -48,4 +48,4 @@ module.exports = {
      salesProductsController,
     salesProductsIdController,
     allSalesController,
-    updateController };
+    updateStatusController };

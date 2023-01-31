@@ -30,7 +30,7 @@ function Login() {
       }
 
       if (response.data.role === 'administrator') {
-        history.push('/admin/manager');
+        history.push('/admin/manage');
       }
     } catch (err) {
       console.log(err);

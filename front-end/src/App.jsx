@@ -30,7 +30,7 @@ function App() {
         <Route path="/seller/orders/:id" component={ SellerOrderDetails } />
       </CustomerProvider>
       <Route exact path="/seller/orders" component={ SellerOrders } />
-      <Route path="/admin/manager" component={ Manage } />
+      <Route path="/admin/manage" component={ Manage } />
     </BrowserRouter>
   );
 }

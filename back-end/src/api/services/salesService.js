@@ -73,7 +73,7 @@ const allSales = async () => Sale.findAll({
     attributes: { exclude: ['user_id', 'seller_id', 'userId', 'sellerId'] },
 });
 
-const update = async ({ status }, id) => {
+const updateStatus = async ({ status }, id) => {
 const updated = await Sale.update({ status }, { where: { id } });
 return updated;
 };
@@ -84,4 +84,4 @@ module.exports = {
     salesProdutcts,
     salesProdutctsId,
     allSales,
-    update };
+    updateStatus };

@@ -5,13 +5,13 @@ const {
       salesProductsController,
       salesProductsIdController, 
       allSalesController, 
-      updateController } = require('../controller/salesController');
+      updateStatusController } = require('../controller/salesController');
 const validationToken = require('../middlewares/tokenValidation');
 
 const sale = Router();
 
 sale.post('/', validationToken, saleController);
-sale.put('/:id', validationToken, updateController);
+sale.put('/:id', validationToken, updateStatusController);
 sale.get('/sellers', sellersController);
 sale.get('/allsales', allSalesController);
 sale.get('/:id', salesProductsIdController);
