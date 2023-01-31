@@ -16,7 +16,6 @@ const newUser = async (obj) => {
     const errorAdm = { status: 403, message: 'User not Authorized' };
     const response = await User
     .findOne({ where: { [Op.or]: [{ email: obj.email }, { name: obj.name }] } });
-    console.log(response);
     if (response) throw throwError;
     if (user.role === 'administrator') {
         const senha = hash(obj.password);
