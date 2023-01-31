@@ -21,13 +21,12 @@ function Register() {
 
   const register = async () => {
     try {
-      const response = await api.post('/register', {
+      await api.post('/register', {
         name: inputName,
         email: inputEmail,
         password: inputPassword,
       });
 
-      console.log(response);
       history.push('/customer/products');
     } catch (err) {
       console.log(err);

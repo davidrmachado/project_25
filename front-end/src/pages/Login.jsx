@@ -21,10 +21,19 @@ function Login() {
       });
 
       delete response.data.id;
-      console.log(response);
       localStorage.setItem('user', JSON.stringify(response.data));
 
-      history.push('/customer/products');
+      if (response.data.role === 'customer') {
+        history.push('/customer/products');
+      }
+
+      if (response.data.role === 'seller') {
+        history.push('/seller/orders');
+      }
+
+      if (response.data.role === 'administrator') {
+        history.push('/admin/manage');
+      }
     } catch (err) {
       console.log(err);
       setErrorMessage(err.message);
@@ -40,8 +49,10 @@ function Login() {
   }, [inputEmail, inputPassword]);
 
   useEffect(() => {
-    localStorage.removeItem('user');
-  }, []);
+    if (localStorage.getItem('user')) {
+      history.push('/customer/products');
+    }
+  });
 
   return (
     <main>

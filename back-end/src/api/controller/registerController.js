@@ -1,4 +1,4 @@
-const { newUser } = require('../services/registerService');
+const { newUser, admUser } = require('../services/registerService');
 
 const registerController = async (req, res) => {
     const corpo = req.body;
@@ -6,4 +6,11 @@ const registerController = async (req, res) => {
     return res.status(201).json({ message: 'Created' });
 };
 
-module.exports = { registerController };
+const admController = async (req, res) => {
+    const corpo = req.body;
+    const { user } = req;
+    await admUser(corpo, user);
+    return res.status(201).json({ message: 'Created' });
+};
+
+module.exports = { registerController, admController };

@@ -1,11 +1,11 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
-import Navbar from '../components/Navbar';
-import ShoppingCart from '../components/ShoppingCart';
+import Navbar from '../../components/CustomerNavbar';
+import ShoppingCart from '../../components/ShoppingCart';
 
-import api from '../utils/apiURL';
-import { CustomerContext } from '../context/CustomerContext';
+import api from '../../utils/apiURL';
+import { CustomerContext } from '../../context/CustomerContext';
 
 export default function Checkout() {
   const [selectedSeller, setSelectedSeller] = useState(0);
@@ -27,7 +27,7 @@ export default function Checkout() {
       products: cart,
     };
 
-    console.log(orderData);
+    console.log('fiz a compra, aqui estão os produtos:', orderData);
 
     try {
       const response = await api.post('/sale', orderData, {
@@ -35,7 +35,7 @@ export default function Checkout() {
           Authorization: token,
         },
       });
-      console.log(response);
+
       navigate.push(`/customer/orders/${response.data.message}`);
     } catch (err) {
       console.log(err);
@@ -55,7 +55,11 @@ export default function Checkout() {
     <main>
       <Navbar />
       <h2>Finalizar Pedido</h2>
-      <ShoppingCart />
+      <ShoppingCart
+        products={ cart }
+        buttonEnabled
+        prefix="customer_checkout"
+      />
       <h2>Detalhes e Endereço para Entrega</h2>
       <form>
         <label htmlFor="seller">

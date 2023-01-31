@@ -5,6 +5,10 @@ import { Link } from 'react-router-dom';
 function Navbar() {
   const [userName, setUserName] = useState('');
 
+  const logout = () => {
+    localStorage.removeItem('user');
+  };
+
   useEffect(() => {
     const user = JSON.parse(localStorage.getItem('user'));
     setUserName(user.name);
@@ -20,7 +24,7 @@ function Navbar() {
       </Link>
       <Link
         data-testid="customer_products__element-navbar-link-orders"
-        to="/orders"
+        to="/customer/orders"
       >
         MEUS PEDIDOS
       </Link>
@@ -33,6 +37,7 @@ function Navbar() {
       <Link
         data-testid="customer_products__element-navbar-link-logout"
         to="/login"
+        onClick={ logout }
       >
         Sair
       </Link>

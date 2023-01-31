@@ -1,7 +1,7 @@
 import React from 'react';
-import ItemCard from '../components/ItemCards';
-import Navbar from '../components/Navbar';
-import Total from '../components/Total';
+import ItemCard from '../../components/ItemCards';
+import Navbar from '../../components/CustomerNavbar';
+import Total from '../../components/Total';
 
 function Products() {
   return (
