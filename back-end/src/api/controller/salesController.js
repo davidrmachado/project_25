@@ -1,44 +1,37 @@
-const { 
-    createSale, 
-    sellers, 
-    salesProdutcts, 
-    salesProdutctsId, 
-    allSales, 
-    update } = require('../services/salesService');
+const salesService = require('../services/salesService');
 
 const saleController = async (req, res) => {
     const arrayProducts = req.body;
     const usuario = req.user;
-    console.log(arrayProducts, usuario);
-    const result = await createSale(arrayProducts, usuario);
+    const result = await salesService.createSale(arrayProducts, usuario);
 return res.status(201).json({ message: result });
 };
 
 const sellersController = async (req, res) => {
-    const response = await sellers();
+    const response = await salesService.sellers();
     return res.status(200).json(response);
 };
 
 const salesProductsController = async (req, res) => {
-    const response = await salesProdutcts();
+    const response = await salesService.salesProdutcts();
     return res.status(200).json(response);
 };
 
 const salesProductsIdController = async (req, res) => {
     const { id } = req.params;
-    const response = await salesProdutctsId(id);
+    const response = await salesService.salesProdutctsId(id);
     return res.status(200).json(response);
 };
 
 const allSalesController = async (req, res) => {
-    const response = await allSales();
+    const response = await salesService.allSales();
     return res.status(200).json(response);
 };
 
 const updateController = async (req, res) => {
  const { id } = req.params;
  const corpo = req.body;
- const response = await update(corpo, id);
+ const response = await salesService.update(corpo, id);
  return res.status(200).json(response);
 };
 
