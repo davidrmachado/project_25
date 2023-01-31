@@ -14,6 +14,7 @@ function CustomerProvider({ children }) {
   useEffect(() => {
     const getProducts = async () => {
       const response = await api.get('/customer/products');
+      if (!response) { return setProducts([]); }
       response.data.forEach((product) => {
         product.quantity = 0;
       });
