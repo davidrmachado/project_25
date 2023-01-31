@@ -14,7 +14,6 @@ function SellerOrders() {
       const response = await api.get('/sale');
       setOrders(response.data);
     };
-
     getOrders();
   }, []);
 
