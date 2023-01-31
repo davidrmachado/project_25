@@ -1,4 +1,4 @@
-const { Sale, SaleProduct, Product, User } = require('../../database/models');
+const models = require('../index');
 
 const SALE = 'sale_id';
 const PRODUCT = 'product_id';
@@ -14,67 +14,65 @@ const obj = (address, user, sellerId) => ({
 });
 
 const create = async (objInfo, user) => {
-    const { dataValues } = await User.findOne({ where: { id: objInfo.sellerId } });
+    const { dataValues } = await models.User.findOne({ where: { id: objInfo.sellerId } });
     const newObj = obj(objInfo, user, Number(dataValues.id)); 
-    const { dataValues: { id } } = await Sale.create({ ...newObj });
+    const { dataValues: { id } } = await models.Sale.create({ ...newObj });
   return Number(id);
 };
 
 const findOne = async (column, search) => {
-    const { dataValues: { id } } = await Product.findOne({ where: { [column]: search } });
+    const { dataValues: { id } } = await models.Product.findOne({ where: { [column]: search } });
     return Number(id);
 };
 
 const createSale = async (objInfo, user) => {
-    try {
             const saleId = await create(objInfo, user);
             const map = objInfo.products.map(async (elem) => {
                const productId = await findOne('name', elem.name);
-                await SaleProduct
+                await models.SaleProduct
                     .create({ 
                         [SALE]: saleId, [PRODUCT]: productId, quantity: Number(elem.quantity) });
             });
             await Promise.all(map);
             return saleId;
-    } catch (err) {
-        console.log(err);
-    }
 };
 
 const sellers = async () => {
-    const vendedores = await User.findAll({ where: { role: 'seller' } });
+    const vendedores = await models.User
+    .findAll({ where: { role: 'seller' }, attributes: { exclude: ['password'] } });
     return vendedores;
 };
 
 const salesProdutcts = async () => {
-    const salesAndProducts = await Sale.findAll({
+    const salesAndProducts = await models.Sale.findAll({
         attributes: { exclude: ['user_id', 'seller_id', 'sellerId', 'userId'] },
         include: [
-            { model: User, as: 'seller', attributes: { exclude: ['password', 'email'] } },
-            { model: Product, as: 'products', through: { attributes: ['quantity'] } },
+            { model: models.User, as: 'seller', attributes: { exclude: ['password', 'email'] } },
+            { model: models.Product, as: 'products', through: { attributes: ['quantity'] } },
         ], 
     });
     return salesAndProducts;
 };
 
 const salesProdutctsId = async (id) => {
-    const salesAndProducts = await Sale.findOne({
+    const salesAndProducts = await models.Sale.findOne({
         where: { id },
         attributes: { exclude: ['user_id', 'seller_id', 'sellerId', 'userId'] },
         include: [
-            { model: User, as: 'seller', attributes: { exclude: ['password', 'email'] } },
-            { model: Product, as: 'products', through: { attributes: ['quantity'] } },
+            { model: models.User, as: 'seller', attributes: { exclude: ['password', 'email'] } },
+            { model: models.Product, as: 'products', through: { attributes: ['quantity'] } },
         ], 
     });
     return salesAndProducts;
 };
 
-const allSales = async () => Sale.findAll({
+const allSales = async () => models.Sale.findAll({
     attributes: { exclude: ['user_id', 'seller_id', 'userId', 'sellerId'] },
 });
 
-const updateStatus = async ({ status }, id) => {
-const updated = await Sale.update({ status }, { where: { id } });
+const update = async ({ status }, id) => {
+const updated = await models.Sale.update({ status }, { where: { id } });
+
 return updated;
 };
 

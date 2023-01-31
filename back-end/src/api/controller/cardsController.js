@@ -1,7 +1,7 @@
-const { allCards } = require('../services/cardsService');
+const cardsService = require('../services/cardsService');
 
 const cardsController = async (_req, res) => {
-  const result = await allCards();
+  const result = await cardsService.allCards();
   return res.status(200).json(result);
 };
 

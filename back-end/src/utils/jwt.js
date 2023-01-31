@@ -1,6 +1,6 @@
 require('dotenv').config();
 /* const fs = require('fs');  */
-const { sign, verify } = require('jsonwebtoken');
+const jwt = require('jsonwebtoken');
 /* const path = require('path');
  */
 /* const keyPath = path.join(__dirname, '../jwt.evaluation.key');
@@ -16,7 +16,7 @@ const JWT_KEY = () => {
 
 const generateToken = (obj) => {
     const { password, ...newObj } = obj;
-    const token = sign({ ...newObj }, 'secret_key', {
+    const token = jwt.sign({ ...newObj }, 'secret_key', {
         expiresIn: '1d',
         algorithm: 'HS256',
     });
@@ -26,7 +26,7 @@ const generateToken = (obj) => {
 
 const verifyToken = (token) => {
     try {
-        const data = verify(token, 'secret_key');
+        const data = jwt.verify(token, 'secret_key');
         return data;
     } catch (err) {
         const throwError = { status: 401, message: 'Expired or invalid token' };

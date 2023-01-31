@@ -19,4 +19,4 @@ const LISTA_DE_PRODUTOS = [
     },
   ]
 
-module.exports = LISTA_DE_PRODUTOS;
+  module.exports = {LISTA_DE_PRODUTOS}
