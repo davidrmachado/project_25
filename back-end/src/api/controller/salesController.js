@@ -28,7 +28,7 @@ const allSalesController = async (req, res) => {
     return res.status(200).json(response);
 };
 
-const updateController = async (req, res) => {
+const updateStatusController = async (req, res) => {
  const { id } = req.params;
  const corpo = req.body;
  const response = await salesService.update(corpo, id);
@@ -41,4 +41,4 @@ module.exports = {
      salesProductsController,
     salesProductsIdController,
     allSalesController,
-    updateController };
+    updateStatusController };

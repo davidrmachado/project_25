@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 
-import Navbar from '../../components/Navbar';
+import Navbar from '../../components/CustomerNavbar';
 import ShoppingCart from '../../components/ShoppingCart';
 
 import api from '../../utils/apiURL';

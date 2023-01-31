@@ -3,15 +3,45 @@ import { useParams } from 'react-router';
 import moment from 'moment/moment';
 
 import api from '../../utils/apiURL';
-import Navbar from '../../components/Navbar';
+import Navbar from '../../components/CustomerNavbar';
 import ShoppingCart from '../../components/ShoppingCart';
 
-function OrderDetails() {
+function CustomerOrderDetails() {
   const { id } = useParams();
   const [order, setOrder] = useState({});
+  const [deliveredButton, setDeliveredButton] = useState(true);
+  const [orderStatus, setOrderStatus] = useState('');
+  const user = JSON.parse(localStorage.getItem('user'));
+  const { token } = user;
 
   const prefix = 'customer_order_details__';
   const orderNumberLength = 4;
+
+  const verifyInitialButtonStates = (status) => {
+    if (status === 'Em Trânsito') {
+      setDeliveredButton(false);
+    } else {
+      setDeliveredButton(true);
+    }
+
+    if (status === 'Entregue') {
+      setOrderStatus('Entregue');
+    }
+  };
+
+  const changeStatus = async (status) => {
+    await api.put(
+      `/sale/${id}`,
+      { status },
+      {
+        headers: {
+          Authorization: token,
+        },
+      },
+    );
+
+    verifyInitialButtonStates(status);
+  };
 
   useEffect(() => {
     const getOrder = async () => {
@@ -21,6 +51,11 @@ function OrderDetails() {
     };
     getOrder();
   }, [id]);
+
+  useEffect(() => {
+    setOrderStatus(order.status);
+    verifyInitialButtonStates(order.status);
+  }, [order]);
 
   return (
     <>
@@ -47,12 +82,13 @@ function OrderDetails() {
             `${prefix}element-order-details-label-delivery-status${order.id}`
           }
         >
-          {order.status}
+          {orderStatus}
         </div>
         <button
           data-testid="customer_order_details__button-delivery-check"
           type="button"
-          disabled
+          onClick={ () => changeStatus('Entregue') }
+          disabled={ deliveredButton }
         >
           Marcar como entregue
         </button>
@@ -62,4 +98,4 @@ function OrderDetails() {
   );
 }
 
-export default OrderDetails;
+export default CustomerOrderDetails;

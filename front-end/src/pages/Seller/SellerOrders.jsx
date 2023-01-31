@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import moment from 'moment/moment';
 
-import Navbar from '../../components/Navbar';
+import Navbar from '../../components/SellerNavbar';
 import api from '../../utils/apiURL';
 
 function SellerOrders() {
@@ -14,7 +14,6 @@ function SellerOrders() {
       const response = await api.get('/sale');
       setOrders(response.data);
     };
-
     getOrders();
   }, []);
 
@@ -24,7 +23,7 @@ function SellerOrders() {
       <div>
         { orders ? (
           orders.map((order) => (
-            <Link key={ order.id } to={ `/customer/orders/${order.id}` }>
+            <Link key={ order.id } to={ `/seller/orders/${order.id}` }>
               <p
                 data-testid={ `seller_orders__element-order-id-${order.id}` }
               >

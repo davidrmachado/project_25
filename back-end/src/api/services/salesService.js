@@ -72,6 +72,7 @@ const allSales = async () => models.Sale.findAll({
 
 const update = async ({ status }, id) => {
 const updated = await models.Sale.update({ status }, { where: { id } });
+
 return updated;
 };
 
@@ -81,4 +82,4 @@ module.exports = {
     salesProdutcts,
     salesProdutctsId,
     allSales,
-    update };
+    updateStatus };
