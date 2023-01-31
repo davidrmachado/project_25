@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import moment from 'moment/moment';
 
-import Navbar from '../../components/Navbar';
+import Navbar from '../../components/SellerNavbar';
 import api from '../../utils/apiURL';
 
 function SellerOrders() {
