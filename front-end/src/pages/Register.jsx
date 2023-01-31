@@ -3,6 +3,8 @@ import { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import { validateEmail, validatePassword } from '../utils/verifyInputData';
 import api from '../utils/apiURL';
+import '../css/Register.css';
+import logoCopoCheio from '../images/copo_cheio_logo_mobile.png';
 
 function Register() {
   const [inputPassword, setInputPassword] = useState('');
@@ -42,47 +44,56 @@ function Register() {
   }, [inputEmail, inputPassword, inputName]);
 
   return (
-    <>
+    <main>
+      <div className="img_container">
+        <img src={ logoCopoCheio } alt="logotipo Copo Cheio" className="logo" />
+      </div>
       <label htmlFor="name-input">
-        Nome
         <input
           data-testid="common_register__input-name"
           id="name-input"
           type="text"
+          placeholder="Nome"
           value={ inputName }
           onChange={ (e) => setInputName(e.target.value) }
         />
       </label>
       <label htmlFor="email-input">
-        Email
         <input
           data-testid="common_register__input-email"
           id="email-input"
           type="text"
+          placeholder="E-mail"
           value={ inputEmail }
           onChange={ (e) => setInputEmail(e.target.value) }
         />
       </label>
       <label htmlFor="password-input">
-        Senha
         <input
           data-testid="common_register__input-password"
           id="password-input"
-          type="text"
+          type="password"
+          placeholder="Senha"
           value={ inputPassword }
           onChange={ (e) => setInputPassword(e.target.value) }
         />
       </label>
       <button
         type="button"
+        className="register-btn"
         data-testid="common_register__button-register"
         disabled={ isDisabled }
         onClick={ register }
       >
         Cadastrar
       </button>
-      <div data-testid="common_register__element-invalid_register">{errorMessage}</div>
-    </>
+      <div
+        className="warningRegister"
+        data-testid="common_register__element-invalid_register"
+      >
+        {errorMessage}
+      </div>
+    </main>
   );
 }
 
