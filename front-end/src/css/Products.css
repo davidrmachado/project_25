@@ -1,0 +1,156 @@
+@media only screen and (max-width: 3600px) {
+    nav.navbar {
+        display: flex;
+        font-weight: 500;
+        font-size: 0.9em;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        border-bottom: 3px black;
+        background-color: #fff;
+        height: 5%;
+        padding-top: 5px;
+        width: 100%;
+        border-bottom: 1px dotted #454545;
+        position: fixed;
+    }
+
+    nav.navbar p {
+        height: auto;
+    }
+
+    .products_list{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+        margin-top: 10%;
+        height: auto;
+    }
+
+    nav a {
+        color: #454545;
+        font-weight: 700;
+        text-decoration: none;
+    }
+
+    article {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        margin-bottom: 20%;
+        height: auto;
+        width: 48%;
+    }
+
+    article img {
+        max-width: 160px;
+        width: auto;
+        height: auto;
+        max-height: 160px;
+    }
+
+    article div.title {
+        box-sizing: border-box;
+        align-items: center;
+        display: flex;
+        flex-direction: row;
+        height: 15%;
+        text-align: center;
+        box-shadow: #454545;
+        width: 100%;
+    }
+
+    article h2 {
+        color: #454545;
+        line-height: 1em;
+        padding: 5px;
+        height: auto;
+    }
+
+    article h4 {
+        color: #454545;
+        height: auto;
+    }
+
+    article div.img_drink_container {
+        background-color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 50%;
+        margin: 0 auto;
+        min-width: 145px;
+        padding: 2px;
+        width: 100%;
+    }
+
+    article div.item_price_container {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 6%;
+        width: 100%;
+    }
+
+    article div.select_quant_container {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 13%;
+        margin: 0.5% auto;
+        width: 100%;
+        padding: 0 7px;
+    }
+
+    button.add_delete_quantity {
+        min-height: 20px;
+        min-width: 20px;
+        max-width: 40px;
+        max-height: 40px;
+        text-align: center;
+        border-radius: 10px;
+        border: solid 1px gray;
+        color: #fff;
+        background-color: rgb(47, 146, 73);
+    }
+
+    input.quantity_input {
+        max-width: 55px;
+        max-height: 52px;
+        text-align: center;
+        border: solid 1px gray;
+    }
+
+    .customer_button-cart {
+        height: 10%;
+        width: 95%;
+        align-self: start;
+        background-color: #fff;
+        margin-top: 33%;
+        position: fixed;
+        bottom: 0px;
+        z-index: 1000;
+    }
+
+    button.button_cart {
+        background-image: url('../images/cart_icon.png');
+        background-size: 16%;
+        background-position: 8px 3px;
+        background-repeat: no-repeat;
+        padding-right: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        width: 75%;
+        background-color: rgb(43, 165, 102);
+    }
+
+    button p {
+        height: auto;
+        color: rgb(43, 17, 0);
+    }
+
+    #total {
+        padding-right: 1.5%;
+        color:rgb(19, 19, 19)
+    }
+}
