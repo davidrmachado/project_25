@@ -82,4 +82,4 @@ module.exports = {
     salesProdutcts,
     salesProdutctsId,
     allSales,
-    updateStatus };
+    update };
