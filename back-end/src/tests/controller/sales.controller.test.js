@@ -96,7 +96,7 @@ afterEach(sinon.restore);
 
         sinon.stub(salesService, 'update').resolves([1]);
         
-        await controller.updateController(req, res);
+        await controller.updateStatusController(req, res);
 
         expect(res.status.calledWith(200)).to.be.equal(true);
         expect(res.json.calledWith([1])).to.be.equal(true);
