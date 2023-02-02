@@ -54,7 +54,7 @@ function Manage() {
   }, [inputEmail, inputPassword, inputName, selectedRole]);
 
   return (
-    <>
+    <div>
       <AdminNavbar />
       <div className="admin_container">
         <div className="img_container">
@@ -114,7 +114,7 @@ function Manage() {
         </button>
         <div data-testid="admin_manage__element-invalid-register">{errorMessage}</div>
       </div>
-    </>
+    </div>
   );
 }
 

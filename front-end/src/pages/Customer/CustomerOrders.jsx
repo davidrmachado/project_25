@@ -18,7 +18,7 @@ function Orders() {
   }, []);
 
   return (
-    <>
+    <div>
       <Navbar />
       <div className="orders_container">
         { orders ? (
@@ -64,7 +64,7 @@ function Orders() {
           ))
         ) : <p> Você não tem pedidos </p> }
       </div>
-    </>
+    </div>
   );
 }
 

@@ -58,7 +58,7 @@ function CustomerOrderDetails() {
   }, [order]);
 
   return (
-    <>
+    <div>
       <Navbar />
       <p>Detalhe do pedido</p>
       <div className="order_details_container">
@@ -102,7 +102,7 @@ function CustomerOrderDetails() {
         </button>
       </div>
       <ShoppingCart products={ order.products } prefix="customer_order_details" />
-    </>
+    </div>
   );
 }
 

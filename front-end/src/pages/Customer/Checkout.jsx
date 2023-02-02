@@ -54,18 +54,16 @@ export default function Checkout() {
   }, []);
 
   return (
-    <>
+    <div>
       <Navbar />
       <div id="cart_header">
         <h1>Finalizar Pedido</h1>
       </div>
-      <div id="shopping_cart">
-        <ShoppingCart
-          products={ cart }
-          buttonEnabled
-          prefix="customer_checkout"
-        />
-      </div>
+      <ShoppingCart
+        products={ cart }
+        buttonEnabled
+        prefix="customer_checkout"
+      />
       <div className="divider">
         <h1>Detalhes e Endereço para Entrega</h1>
       </div>
@@ -115,6 +113,6 @@ export default function Checkout() {
       >
         Finalizar pedido
       </button>
-    </>
+    </div>
   );
 }

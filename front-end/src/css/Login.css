@@ -3,13 +3,14 @@
   margin: 0;
 }
 
-@media only screen and (max-width: 3600px) {
+@media only screen and ( max-width : 3600px ) {
+
   main {
     background-color: #fafafa;
     display: flex;
     flex-flow: column wrap;
-    justify-content: space-around;
     height: 100vh;
+    justify-content: space-around;
     margin: 0 auto;
     vertical-align: middle;
     width: 99%;
@@ -24,21 +25,16 @@
   }
 
   #input_container {
-    align-items: stretch;
-    display: flex;
-    flex-direction: column;
-    height: 25vh;
-    justify-content: center;
     margin: auto;
     width: 100%;
   }
 
-  #button_container {
+  #button_container, #input_container {
     align-items: stretch;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
     height: 25vh;
+    justify-content: space-around;
   }
 
   #info {
@@ -122,7 +118,7 @@
     height: 56px;
     line-height: 2em;
     margin: 5% auto;
-    padding: 0px 15px;
+    padding: 0 15px;
     text-align: start;
     text-indent: 0%;
     text-rendering: auto;
@@ -132,16 +128,16 @@
 }
 
 /* Large Cell Screend */
-/* @media only screen and (min-width: 600px) {
 
+/* @media only screen and (min-width: 600px) {
 } */
 
 /* Tablets and Small Notebooks */
-/* @media only screen and (min-width: 780px) {
-   
+
+/* @media only screen and (min-width: 780px) {   
 } */
 
 /* Large Screens */
-/* @media only screen and (min-width: 1200px) {
-   
+
+/* @media only screen and (min-width: 1200px) {   
 } */
