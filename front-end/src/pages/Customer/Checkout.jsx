@@ -7,6 +7,8 @@ import ShoppingCart from '../../components/ShoppingCart';
 import api from '../../utils/apiURL';
 import { CustomerContext } from '../../context/CustomerContext';
 
+import '../../css/Products.css';
+
 export default function Checkout() {
   const [selectedSeller, setSelectedSeller] = useState(0);
   const [deliveryAddress, setDeliveryAddress] = useState('');
@@ -52,18 +54,24 @@ export default function Checkout() {
   }, []);
 
   return (
-    <main>
+    <>
       <Navbar />
-      <h2>Finalizar Pedido</h2>
-      <ShoppingCart
-        products={ cart }
-        buttonEnabled
-        prefix="customer_checkout"
-      />
-      <h2>Detalhes e Endereço para Entrega</h2>
-      <form>
+      <div id="cart_header">
+        <h1>Finalizar Pedido</h1>
+      </div>
+      <div id="shopping_cart">
+        <ShoppingCart
+          products={ cart }
+          buttonEnabled
+          prefix="customer_checkout"
+        />
+      </div>
+      <div className="divider">
+        <h1>Detalhes e Endereço para Entrega</h1>
+      </div>
+      <form className="checkout">
         <label htmlFor="seller">
-          P. Vendedora Responsável
+          Pessoa Vendedora Responsável
           <select
             id="seller"
             data-testid="customer_checkout__select-seller"
@@ -76,34 +84,37 @@ export default function Checkout() {
           </select>
         </label>
 
-        <label htmlFor="address">
-          Endereço
-          <input
-            type="text"
-            id="address"
-            data-testid="customer_checkout__input-address"
-            value={ deliveryAddress }
-            onChange={ (e) => setDeliveryAddress(e.target.value) }
-          />
-        </label>
-        <label htmlFor="address-number">
-          Número
-          <input
-            type="number"
-            id="address-number"
-            data-testid="customer_checkout__input-address-number"
-            value={ deliveryNumber }
-            onChange={ (e) => setDeliveryNumber(e.target.value) }
-          />
-        </label>
+        <div id="address_container">
+          <label htmlFor="address">
+            Endereço
+            <input
+              type="text"
+              id="address"
+              data-testid="customer_checkout__input-address"
+              value={ deliveryAddress }
+              onChange={ (e) => setDeliveryAddress(e.target.value) }
+            />
+          </label>
+          <label htmlFor="address-number">
+            Número
+            <input
+              type="number"
+              id="address-number"
+              data-testid="customer_checkout__input-address-number"
+              value={ deliveryNumber }
+              onChange={ (e) => setDeliveryNumber(e.target.value) }
+            />
+          </label>
+        </div>
       </form>
       <button
         type="button"
+        className="total_container"
         data-testid="customer_checkout__button-submit-order"
         onClick={ finishOrder }
       >
         Finalizar pedido
       </button>
-    </main>
+    </>
   );
 }

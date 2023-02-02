@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter, Route, Redirect } from 'react-router-dom';
+import { Route, Redirect } from 'react-router-dom';
 import CustomerProvider from './context/CustomerContext';
 
 import Login from './pages/Login';
@@ -16,7 +16,7 @@ import './App.css';
 
 function App() {
   return (
-    <BrowserRouter>
+    <main>
       <Route exact path="/">
         <Redirect to="/login" />
       </Route>
@@ -31,7 +31,7 @@ function App() {
       </CustomerProvider>
       <Route exact path="/seller/orders" component={ SellerOrders } />
       <Route path="/admin/manage" component={ Manage } />
-    </BrowserRouter>
+    </main>
   );
 }
 

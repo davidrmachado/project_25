@@ -61,30 +61,38 @@ function CustomerOrderDetails() {
     <>
       <Navbar />
       <p>Detalhe do pedido</p>
-      <div>
-        <p
+      <div className="order_details_container">
+        <h1
           data-testid={ `${prefix}element-order-details-label-order-id` }
         >
-          {`PEDIDO ${id.padStart(orderNumberLength, '0')}`}
-        </p>
-        <p
+          {`Pedido ${id.padStart(orderNumberLength, '0')}: Detalhes`}
+        </h1>
+        <h3
           data-testid={ `${prefix}element-order-details-label-seller-name` }
         >
-          {`P. Vend: ${order.sellerName}`}
-        </p>
+          {`Pessoa Vendedora: ${order.sellerName}`}
+        </h3>
         <p
           data-testid={ `${prefix}element-order-details-label-order-date` }
         >
+          <b>Data de Solicitação:</b>
+          {' '}
           { moment(`${order.saleDate}`).format('DD/MM/YYYY') }
         </p>
         <div
+          className="status_order"
           data-testid={
             `${prefix}element-order-details-label-delivery-status${order.id}`
           }
         >
-          {orderStatus}
+          <p>
+            <b>Status:</b>
+            {' '}
+            {orderStatus}
+          </p>
         </div>
         <button
+          className="login-btn"
           data-testid="customer_order_details__button-delivery-check"
           type="button"
           onClick={ () => changeStatus('Entregue') }

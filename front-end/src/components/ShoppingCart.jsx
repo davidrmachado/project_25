@@ -1,6 +1,7 @@
 import { useContext } from 'react';
 import PropTypes from 'prop-types';
 import { CustomerContext } from '../context/CustomerContext';
+import trash from '../images/trash_icon.png';
 
 export default function ShoppingCart({ products = [], buttonEnabled = false, prefix }) {
   const { setCart } = useContext(CustomerContext);
@@ -24,76 +25,57 @@ export default function ShoppingCart({ products = [], buttonEnabled = false, pre
 
   return (
     <section>
-      <h2> Meu Pedido </h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Item</th>
-            <th>Descrição</th>
-            <th>Quantidade</th>
-            <th>Valor unitário</th>
-            <th>Sub-total</th>
-            { buttonEnabled ? <th>Remover item</th> : <td /> }
-          </tr>
-        </thead>
-        <tbody>
-          { products.map((product, index) => (
-            <tr key={ product.id }>
-              <td
-                data-testid={ `${prefix}__element-order-table-item-number-${index}` }
-              >
-                {index + 1}
-              </td>
+      <div id="cart_list">
 
-              <td
-                data-testid={ `${prefix}__element-order-table-name-${index}` }
-              >
-                {product.name}
-              </td>
-
-              <td
-                data-testid={ `${prefix}__element-order-table-quantity-${index}` }
-              >
-                {product.quantity}
-              </td>
-
-              <td
-                data-testid={ `${prefix}__element-order-table-unit-price-${index}` }
-              >
-                {fixNumberFormat(Number(product.price))}
-              </td>
-
-              <td
-                data-testid={ `${prefix}__element-order-table-sub-total-${index}` }
-              >
+        { products.map((product, index) => (
+          <div key={ `produto_${index}` } id="item_card">
+            <div className="img_shop_cart_container">
+              <img src={ product.url_image } alt={ `imagem de  ${product.name}` } />
+            </div>
+            <div className="product_info">
+              <div className="item_info">
+                <p className="item_title">{ product.name }</p>
+              </div>
+              <div className="item_info">
+                <p className="item_price">
+                  {product.quantity}
+                  { ' x R$ '}
+                  {fixNumberFormat(Number(product.price))}
+                </p>
+              </div>
+              <div className="item_info">
                 { buttonEnabled ? (
-                  fixNumberFormat(Number(product.price * product.quantity))
+                  <p className="item_total">
+                    { 'Total R$ ' }
+                    {fixNumberFormat(Number(product.price * product.quantity))}
+                  </p>
                 ) : (
                   fixNumberFormat(Number(product.price * product.SaleProduct.quantity))
                 ) }
-              </td>
+              </div>
+            </div>
+            { buttonEnabled ? (
+              <button
+                className="remove_iten_btn"
+                type="button"
+                id="deleteBtn"
+                data-testid={
+                  `customer_checkout__element-order-table-remove-${index}`
+                }
+                onClick={ () => removeFromCart(product.id) }
+              >
+                <img src={ trash } alt="trash icon" />
+              </button>
+            ) : <>.</> }
+          </div>
+        ))}
+      </div>
 
-              { buttonEnabled ? (
-                <td>
-                  <button
-                    type="button"
-                    id="deleteBtn"
-                    data-testid={
-                      `customer_checkout__element-order-table-remove-${index}`
-                    }
-                    onClick={ () => removeFromCart(product.id) }
-                  >
-                    Remover
-                  </button>
-                </td>) : <td /> }
-            </tr>
-          )) }
-        </tbody>
-      </table>
       <div
+        className="total_container"
         data-testid={ `${prefix}__element-order-total-price` }
       >
-        { `Total: ${totalValue()}` }
+        { `Total: R$ ${totalValue()}` }
       </div>
     </section>
   );
