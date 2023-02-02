@@ -1,19 +1,19 @@
 @media only screen and (max-width: 3600px) {
     main {
+        background: #fafafa;
         display: flex;
         flex-direction: column;
-        flex-wrap: wrap;
         flex-flow: column;
+        flex-wrap: wrap;
+        height: 100vh;
         margin: 0 auto;
         vertical-align: middle;
         width: 99%;
-        background: #FAFAFA;
-        height: 100vh;
     }
 
     .img_container {
-        display: flex;
         align-items: center;
+        display: flex;
         height: 40%;
     }
 
@@ -28,14 +28,13 @@
         cursor: pointer;
         display: inline-block;
         height: 8vh;
-        /* line-height: 10vh; */
         margin: 2% auto;
         padding: 6%;
-        width: 98%;
         position: relative;
         text-align: center;
         touch-action: manipulation;
         white-space: nowrap;
+        width: 98%;
     }
 
     button.register-btn:disabled {
@@ -44,10 +43,10 @@
     }
 
     div.warningRegister {
-        height: 45%;
-        margin-bottom: 2%;
-        display: flex;
         align-items: center;
+        display: flex;
+        height: 45%;
         justify-content: center;
+        margin-bottom: 2%;
     }
 }

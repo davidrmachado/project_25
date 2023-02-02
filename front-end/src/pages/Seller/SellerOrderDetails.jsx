@@ -102,7 +102,7 @@ function SellerOrderDetails() {
             `${prefix}element-order-details-label-delivery-status${order.id}`
           }
         >
-          {orderStatus}
+          <p>{orderStatus}</p>
         </div>
         <button
           className="login-btn"

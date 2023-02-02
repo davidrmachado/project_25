@@ -25,6 +25,7 @@ function Navbar() {
         Meus Pedidos
       </Link>
       <div
+        className="username_div"
         data-testid="customer_products__element-navbar-user-full-name"
         to="/userProfile"
       >

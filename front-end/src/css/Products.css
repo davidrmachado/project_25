@@ -30,7 +30,11 @@
         color: #454545;
         font-weight: 700;
         text-decoration: none;
-        height: 100px;
+        height: 1px;
+    }
+
+    .username_div {
+        height: 10px;
     }
 
     article {
@@ -430,6 +434,26 @@
         align-items: center;
         justify-content: center;
         height: auto;
+        padding: 4%;
+    }
+
+    label [for='Role'] {
+        width: 200%;
+    }
+
+    .select_role {
+        height: 8vh;
+        width: 100%;
+        border-radius: 4px;
+    }
+
+    .admin_container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
         padding: 4%;
     }
 }

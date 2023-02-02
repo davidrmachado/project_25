@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import AdminNavbar from '../../components/AdminNavbar';
 import { validateEmail, validatePassword } from '../../utils/verifyInputData';
 import api from '../../utils/apiURL';
+import logoCopoCheio from '../../images/copo_cheio_logo_mobile.png';
 
 function Manage() {
   const [inputPassword, setInputPassword] = useState('');
@@ -55,57 +56,64 @@ function Manage() {
   return (
     <>
       <AdminNavbar />
-      <label htmlFor="name-input">
-        Nome
-        <input
-          data-testid="admin_manage__input-name"
-          id="name-input"
-          type="text"
-          value={ inputName }
-          onChange={ (e) => setInputName(e.target.value) }
-        />
-      </label>
-      <label htmlFor="email-input">
-        Email
-        <input
-          data-testid="admin_manage__input-email"
-          id="email-input"
-          type="text"
-          value={ inputEmail }
-          onChange={ (e) => setInputEmail(e.target.value) }
-        />
-      </label>
-      <label htmlFor="password-input">
-        Senha
-        <input
-          data-testid="admin_manage__input-password"
-          id="password-input"
-          type="text"
-          value={ inputPassword }
-          onChange={ (e) => setInputPassword(e.target.value) }
-        />
-      </label>
-      <label htmlFor="role">
-        <select
-          data-testid="admin_manage__select-role"
-          id="role"
-          value={ selectedRole }
-          onChange={ (e) => setSelectedRole(e.target.value) }
+      <div className="admin_container">
+        <div className="img_container">
+          <img src={ logoCopoCheio } alt="logotipo Copo Cheio" className="logo" />
+        </div>
+        <label htmlFor="name-input">
+          <input
+            data-testid="admin_manage__input-name"
+            id="name-input"
+            type="text"
+            placeholder="Nome..."
+            value={ inputName }
+            onChange={ (e) => setInputName(e.target.value) }
+          />
+        </label>
+        <label htmlFor="email-input">
+          <input
+            data-testid="admin_manage__input-email"
+            id="email-input"
+            placeholder="Email..."
+            type="text"
+            value={ inputEmail }
+            onChange={ (e) => setInputEmail(e.target.value) }
+          />
+        </label>
+        <label htmlFor="password-input">
+          <input
+            data-testid="admin_manage__input-password"
+            id="password-input"
+            type="password"
+            placeholder="Senha..."
+            value={ inputPassword }
+            onChange={ (e) => setInputPassword(e.target.value) }
+          />
+        </label>
+        <label htmlFor="role">
+          <select
+            className="select_role"
+            data-testid="admin_manage__select-role"
+            id="role"
+            value={ selectedRole }
+            onChange={ (e) => setSelectedRole(e.target.value) }
+          >
+            <option defaultValue value="">Escolha uma categoria</option>
+            <option value="seller">Vendedor</option>
+            <option value="customer">Consumidor</option>
+          </select>
+        </label>
+        <button
+          type="button"
+          className="login-btn"
+          data-testid="admin_manage__button-register"
+          disabled={ isDisabled }
+          onClick={ register }
         >
-          <option defaultValue value="">Escolha uma categoria</option>
-          <option value="seller">Vendedor</option>
-          <option value="customer">Consumidor</option>
-        </select>
-      </label>
-      <button
-        type="button"
-        data-testid="admin_manage__button-register"
-        disabled={ isDisabled }
-        onClick={ register }
-      >
-        Cadastrar
-      </button>
-      <div data-testid="admin_manage__element-invalid-register">{errorMessage}</div>
+          Cadastrar
+        </button>
+        <div data-testid="admin_manage__element-invalid-register">{errorMessage}</div>
+      </div>
     </>
   );
 }
