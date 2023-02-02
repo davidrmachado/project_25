@@ -43,7 +43,7 @@ function Register() {
   }, [inputEmail, inputPassword, inputName]);
 
   return (
-    <main>
+    <div className="register_container">
       <div className="img_container">
         <img src={ logoCopoCheio } alt="logotipo Copo Cheio" className="logo" />
       </div>
@@ -92,7 +92,7 @@ function Register() {
       >
         {errorMessage}
       </div>
-    </main>
+    </div>
   );
 }
 

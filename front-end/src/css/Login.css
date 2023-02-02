@@ -1,136 +1,134 @@
 * {
-    box-sizing: border-box;
-    margin: 0;
+  box-sizing: border-box;
+  margin: 0;
 }
 
 @media only screen and (max-width: 3600px) {
-    main {
-        background-color: #fafafa;
-        display: flex;
-        flex-direction: column;
-        flex-flow: column;
-        flex-wrap: wrap;
-        height: 100vh;
-        margin: 0 auto;
-        vertical-align: middle;
-        width: 99%;
-    }
+  main {
+    background-color: #fafafa;
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: space-around;
+    height: 100vh;
+    margin: 0 auto;
+    vertical-align: middle;
+    width: 99%;
+  }
 
-    div.warning {
-        align-items: center;
-        display: flex;
-        height: 30%;
-        justify-content: center;
-        margin-bottom: 2%;
-    }
+  div.warning {
+    align-items: center;
+    display: flex;
+    height: auto;
+    justify-content: center;
+    margin-bottom: 2%;
+  }
 
-    #input_container {
-        align-items: stretch;
-        display: flex;
-        flex-direction: column;
-        height: 30vh;
-        justify-content: center;
-        margin: auto;
-        width: 100%;
-    }
+  #input_container {
+    align-items: stretch;
+    display: flex;
+    flex-direction: column;
+    height: 25vh;
+    justify-content: center;
+    margin: auto;
+    width: 100%;
+  }
 
-    #button_container {
-        align-items: stretch;
-        display: flex;
-        flex-direction: column;
-        justify-content: space-around;
-    }
+  #button_container {
+    align-items: stretch;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 25vh;
+  }
 
-    #info {
-        border-top: 1px rgb(204, 204, 204);
-        color: #454545;
-        font-size: 0.8em;
-        font-weight: 600;
-        height: 5vh;
-        line-height: 1em;
-        margin: 2% 0;
-        text-align: center;
-    }
+  #info {
+    border-top: 1px rgb(204, 204, 204);
+    color: #454545;
+    font-size: 0.8em;
+    font-weight: 600;
+    height: 5vh;
+    line-height: 1em;
+    margin: 2% 0;
+    text-align: center;
+  }
 
-    button {
-        align-items: center;
-        appearance: none;
-        border-radius: 24px;
-        cursor: pointer;
-        display: flex;
-        font-size: 1.3em;
-        font-weight: 600;
-        height: 8vh;
-        justify-content: center;
-        margin: 2% auto;
-        padding: 6%;
-        position: relative;
-        text-align: center;
-        touch-action: manipulation;
-        white-space: nowrap;
-        width: 98%;
-    }
+  button {
+    align-items: center;
+    appearance: none;
+    border-radius: 24px;
+    cursor: pointer;
+    display: flex;
+    font-size: 1.3em;
+    font-weight: 600;
+    height: 8vh;
+    justify-content: center;
+    margin: 2% auto;
+    padding: 6%;
+    position: relative;
+    text-align: center;
+    touch-action: manipulation;
+    white-space: nowrap;
+    width: 98%;
+  }
 
-    button.register-btn {
-        background-color: #b45abe;
-        border: 1px solid rgba(27, 31, 35, .15);
-        color: white;
-        line-height: 20px;
-    }
+  button.register-btn {
+    background-color: #b45abe;
+    border: 1px solid rgba(27, 31, 35, 0.15);
+    color: white;
+    line-height: 20px;
+  }
 
-    button.register-btn:hover {
-        background-color: #bd77a9;
-    }
+  button.register-btn:hover {
+    background-color: #bd77a9;
+  }
 
-    button.register-btn:focus {
-        box-shadow: rgba(219, 219, 219, 0.836) 0 0 0 3px;
-        outline: none;
-    }
+  button.register-btn:focus {
+    box-shadow: rgba(219, 219, 219, 0.836) 0 0 0 3px;
+    outline: none;
+  }
 
-    button.login-btn {
-        background-color: rgb(43, 165, 102);
-        border: 1px solid rgba(27, 31, 35, .15);
-        color: white;
-        line-height: 20px;
-    }   
+  button.login-btn {
+    background-color: rgb(43, 165, 102);
+    border: 1px solid rgba(27, 31, 35, 0.15);
+    color: white;
+    line-height: 20px;
+  }
 
-    button.login-btn:hover {
-        background-color: rgba(43, 165, 102, 0.7);
-    }
+  button.login-btn:hover {
+    background-color: rgba(43, 165, 102, 0.7);
+  }
 
-    button.login-btn:disabled {
-        background-color: rgba(170, 233, 200, 0.7);
-        cursor: default;
-    }
+  button.login-btn:disabled {
+    background-color: rgba(170, 233, 200, 0.7);
+    cursor: default;
+  }
 
-    img.logo {
-        margin: 5% auto;
-        max-height: 70%;
-        max-width: 80%;
-        min-height: 30%;
-        min-width: 60%;
-    }
+  img.logo {
+    margin: 5% auto;
+    max-height: 70%;
+    max-width: 80%;
+    min-height: 30%;
+    min-width: 60%;
+  }
 
-    input{
-        appearance: auto;
-        background: whitesmoke;
-        border: 2px solid #ccc;
-        border-radius: 4px;
-        cursor: text;
-        display: inline-block;
-        font-size: 1.2em;
-        height: 56px;
-        line-height: 2em;
-        margin: 5% auto;
-        padding: 0px 15px;
-        text-align: start;
-        text-indent: 0%;
-        text-rendering: auto;
-        width: 100%;
-        writing-mode: horizontal-tb;
-    }
-
-
+  input {
+    appearance: auto;
+    background: whitesmoke;
+    border: 2px solid #ccc;
+    border-radius: 4px;
+    cursor: text;
+    display: inline-block;
+    font-size: 1.2em;
+    height: 56px;
+    line-height: 2em;
+    margin: 5% auto;
+    padding: 0px 15px;
+    text-align: start;
+    text-indent: 0%;
+    text-rendering: auto;
+    width: 100%;
+    writing-mode: horizontal-tb;
+  }
 }
 
 /* Large Cell Screend */
@@ -140,10 +138,10 @@
 
 /* Tablets and Small Notebooks */
 /* @media only screen and (min-width: 780px) {
-    
+   
 } */
 
 /* Large Screens */
 /* @media only screen and (min-width: 1200px) {
-    
+   
 } */
