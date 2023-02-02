@@ -75,24 +75,29 @@ function SellerOrderDetails() {
   return (
     <>
       <Navbar />
-      <p>Detalhe do pedido</p>
-      <div>
-        <p
+      <div className="order_details_container">
+        <h1>Detalhe do pedido</h1>
+        <h3
           data-testid={ `${prefix}element-order-details-label-order-id` }
         >
           {`PEDIDO ${id.padStart(orderNumberLength, '0')}`}
-        </p>
+        </h3>
         <p
           data-testid={ `${prefix}element-order-details-label-seller-name` }
         >
-          {`P. Vend: ${order.sellerName}`}
+          <b>Pessoa Vendedora:</b>
+          {' '}
+          {order.sellerName}
         </p>
         <p
           data-testid={ `${prefix}element-order-details-label-order-date` }
         >
+          <b>Data de Solicitação:</b>
+          {' '}
           { moment(`${order.saleDate}`).format('DD/MM/YYYY') }
         </p>
         <div
+          className="status_order"
           data-testid={
             `${prefix}element-order-details-label-delivery-status${order.id}`
           }
@@ -100,20 +105,22 @@ function SellerOrderDetails() {
           {orderStatus}
         </div>
         <button
+          className="login-btn"
           data-testid="seller_order_details__button-preparing-check"
           type="button"
           onClick={ () => changeStatus('Preparando') }
           disabled={ preparingButton }
         >
-          PREPARAR PEDIDO
+          Preparar Pedido
         </button>
         <button
+          className="login-btn"
           data-testid="seller_order_details__button-dispatch-check"
           type="button"
           onClick={ () => changeStatus(inTransit) }
           disabled={ deliveryButton }
         >
-          SAIU PARA ENTREGA
+          Saiu Para Entrega
         </button>
       </div>
       <ShoppingCart products={ order.products } prefix="seller_order_details" />
