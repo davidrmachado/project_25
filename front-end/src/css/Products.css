@@ -5,6 +5,7 @@
     font-weight: 700;
     height: auto;
     margin-bottom: 5%;
+    margin-top: 3%;
     text-align: center;
   }
 
@@ -75,7 +76,7 @@
     width: auto;
   }
 
-  article div.title {
+  .product_title {
     align-items: center;
     box-shadow: #454545;
     box-sizing: border-box;
@@ -98,7 +99,7 @@
     height: auto;
   }
 
-  article div.img_drink_container {
+  .img_drink_container {
     align-items: center;
     background-color: white;
     display: flex;
@@ -110,7 +111,7 @@
     width: 100%;
   }
 
-  article div.item_price_container {
+  .item_price_container {
     align-items: center;
     display: flex;
     height: 6%;
@@ -118,7 +119,7 @@
     width: 100%;
   }
 
-  article div.select_quant_container {
+  .select_quant_container {
     align-items: center;
     display: flex;
     height: 13%;
@@ -128,7 +129,7 @@
     width: 100%;
   }
 
-  button.add_delete_quantity {
+  .add_delete_quantity {
     background-color: rgb(47, 146, 73);
     border: solid 1px gray;
     border-radius: 10px;
@@ -140,7 +141,7 @@
     text-align: center;
   }
 
-  input.quantity_input {
+  .quantity_input {
     border: solid 1px gray;
     max-height: 52px;
     max-width: 55px;
@@ -234,7 +235,7 @@
     width: 100%;
   }
 
-  div.item_info p {
+  .item_info p {
     color: #454545;
     height: auto;
   }
@@ -298,10 +299,11 @@
   }
 
   label[ for = 'seller' ] {
+    display: flex;
     flex-direction: column;
     font-weight: 700;
     height: auto;
-    justify-content: center;
+    justify-content: center;  
     line-height: 2em;
     width: 80%;
   }
