@@ -65,7 +65,7 @@ export default function Checkout() {
       <div className="divider">
         <h1>Detalhes e Endereço para Entrega</h1>
       </div>
-      <form className="checkout">
+      <form>
         <label htmlFor="seller">
           Pessoa Vendedora Responsável
           <select

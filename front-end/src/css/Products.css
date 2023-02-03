@@ -1,7 +1,31 @@
-@media only screen and (max-width: 768px) {
+@media only screen and ( max-width : 768px ) {
+
+  div h1,
+  h2,
+  h3,
+  h4 {
+    color: #454545;
+    font-weight: 700;
+    height: auto;
+    margin-bottom: 5%;
+    text-align: center;
+  }
+
+  img {
+    height: auto;
+    max-height: 120px;
+    max-width: 120px;
+    width: auto;
+  }
+
+  p {
+    color: #454545;
+    height: auto;
+    margin-bottom: 3%;
+  }
 
   .navbar {
-    background-color: #fff;
+    background-color: white;
     border-bottom: 1px dotted #454545;
     display: flex;
     flex-wrap: wrap;
@@ -12,6 +36,11 @@
     padding-top: 5px;
     position: fixed;
     width: 100%;
+  }
+
+  button p {
+    color: rgb(43, 17, 0);
+    height: auto;
   }
 
   nav.navbar p {
@@ -110,7 +139,7 @@
     background-color: rgb(47, 146, 73);
     border: solid 1px gray;
     border-radius: 10px;
-    color: #fff;
+    color: white;
     max-height: 40px;
     max-width: 40px;
     min-height: 20px;
@@ -127,8 +156,8 @@
 
   .customer_button-cart {
     align-self: start;
-    background-color: #fff;
-    bottom: 0px;
+    background-color: white;
+    bottom: 0;
     height: 10%;
     margin-top: 33%;
     position: fixed;
@@ -138,7 +167,7 @@
 
   button.button_cart {
     align-items: center;
-    background-image: url("../images/cart_icon.png");
+    background-image: url('../images/cart_icon.png');
     background-color: rgb(43, 165, 102);
     background-position: 8px 3px;
     background-repeat: no-repeat;
@@ -149,10 +178,7 @@
     width: 75%;
   }
 
-  button p {
-    color: rgb(43, 17, 0);
-    height: auto;
-  }
+
 
   #total {
     color: rgb(19, 19, 19);
@@ -180,23 +206,6 @@
     width: 100%;
   }
 
-  div h1,
-  h2,
-  h3,
-  h4 {
-    color: #454545;
-    font-weight: 700;
-    height: auto;
-    margin-bottom: 5%;
-    text-align: center;
-  }
-
-  p {
-    color: #454545;
-    height: auto;
-    margin-bottom: 3%;
-  }
-
   #cart_list {
     display: flex;
     flex-direction: column;
@@ -220,13 +229,6 @@
     justify-content: center;
     min-width: 100px;
     padding: 2px;
-  }
-
-  img {
-    height: auto;
-    max-height: 120px;
-    max-width: 120px;
-    width: auto;
   }
 
   .product_info {
@@ -282,7 +284,7 @@
     align-items: center;
     background-color: rgb(47, 146, 73);
     border-radius: 10px;
-    color: #f5f5f5;
+    color: white;
     display: flex;
     font-size: 1.6em;
     font-weight: 700;
@@ -304,13 +306,7 @@
     height: auto;
   }
 
-  form .checkout {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-  }
-
-  label[for="seller"] {
+  label[ for = 'seller' ] {
     flex-direction: column;
     font-weight: 700;
     height: auto;
@@ -319,7 +315,7 @@
     width: 80%;
   }
 
-  label[for="address"] {
+  label[ for = 'address' ] {
     display: flex;
     flex-direction: column;
     font-weight: 700;
@@ -329,7 +325,7 @@
     width: 80%;
   }
 
-  label[for="address-number"] {
+  label[ for = 'address-number' ] {
     align-items: center;
     display: flex;
     flex-direction: column;
@@ -426,7 +422,7 @@
   }
 
   div .status_order p {
-    color: #f5f5f5;
+    color: white;
     font-size: 1.2em;
     font-weight: 700;
   }
@@ -442,7 +438,7 @@
     width: 100%;
   }
 
-  label [for="Role"] {
+  label [ for = 'Role' ] {
     width: 200%;
   }
 
