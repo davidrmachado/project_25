@@ -73,7 +73,7 @@ function SellerOrderDetails() {
   }, [order]);
 
   return (
-    <>
+    <div>
       <Navbar />
       <div className="order_details_container">
         <h1>Detalhe do pedido</h1>
@@ -102,7 +102,7 @@ function SellerOrderDetails() {
             `${prefix}element-order-details-label-delivery-status${order.id}`
           }
         >
-          {orderStatus}
+          <p>{orderStatus}</p>
         </div>
         <button
           className="login-btn"
@@ -124,7 +124,7 @@ function SellerOrderDetails() {
         </button>
       </div>
       <ShoppingCart products={ order.products } prefix="seller_order_details" />
-    </>
+    </div>
   );
 }
 

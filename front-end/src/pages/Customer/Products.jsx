@@ -6,13 +6,13 @@ import '../../css/Products.css';
 
 function Products() {
   return (
-    <>
+    <div>
       <Navbar />
       <ItemCard />
       <footer>
         <Total />
       </footer>
-    </>
+    </div>
   );
 }
 

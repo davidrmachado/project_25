@@ -30,7 +30,11 @@
         color: #454545;
         font-weight: 700;
         text-decoration: none;
-        height: 100px;
+        height: 1px;
+    }
+
+    .username_div {
+        height: 10px;
     }
 
     article {
@@ -290,6 +294,7 @@
         border-bottom: 2px double #353535;
         padding: 20px 0;
         margin-bottom: 5%;
+        height: auto;
     }
 
     section {
@@ -331,16 +336,22 @@
         width: 18%;
     }
 
+    form {
+        height: auto;
+    }
+
+    footer {
+        height: auto;
+    }
+
     #seller {
         display: flex;
-        width: 80%;
+        width: 100%;
         flex-direction: column;
-        background-color: rgb(248, 248, 198);
         align-items: center;
         justify-content: center;
-        font-size: 1.2em;
         padding-top: 10px;
-        height: 20%;
+        height: 56px;
         margin-bottom: 8%;
     }
     
@@ -430,6 +441,26 @@
         align-items: center;
         justify-content: center;
         height: auto;
+        padding: 4%;
+    }
+
+    label [for='Role'] {
+        width: 200%;
+    }
+
+    .select_role {
+        height: 8vh;
+        width: 100%;
+        border-radius: 4px;
+    }
+
+    .admin_container {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
         padding: 4%;
     }
 }

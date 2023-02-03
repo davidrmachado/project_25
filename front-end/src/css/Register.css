@@ -1,53 +1,40 @@
 @media only screen and (max-width: 3600px) {
-    main {
-        display: flex;
-        flex-direction: column;
-        flex-wrap: wrap;
-        flex-flow: column;
-        margin: 0 auto;
-        vertical-align: middle;
-        width: 99%;
-        background: #FAFAFA;
-        height: 100vh;
-    }
+  .img_container {
+    align-items: center;
+    display: flex;
+    height: 40vh;
+  }
 
-    .img_container {
-        display: flex;
-        align-items: center;
-        height: 40%;
-    }
+  img.logo {
+    height: auto;
+    margin: 5% auto;
+  }
 
-    img.logo {
-        height: auto;
-        margin: 5% auto;
-    }
+  button {
+    appearance: none;
+    border-radius: 24px;
+    cursor: pointer;
+    display: inline-block;
+    height: 8vh;
+    margin: 2% auto;
+    padding: 6%;
+    position: relative;
+    text-align: center;
+    touch-action: manipulation;
+    white-space: nowrap;
+    width: 98%;
+  }
 
-    button {
-        appearance: none;
-        border-radius: 24px;
-        cursor: pointer;
-        display: inline-block;
-        height: 8vh;
-        /* line-height: 10vh; */
-        margin: 2% auto;
-        padding: 6%;
-        width: 98%;
-        position: relative;
-        text-align: center;
-        touch-action: manipulation;
-        white-space: nowrap;
-    }
+  button.register-btn:disabled {
+    background-color: #e99ff1;
+    cursor: default;
+  }
 
-    button.register-btn:disabled {
-        background-color: #e99ff1;
-        cursor: default;
-    }
-
-    div.warningRegister {
-        height: 45%;
-        margin-bottom: 2%;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
+  div.warningRegister {
+    align-items: center;
+    display: flex;
+    height: auto;
+    justify-content: center;
+    margin-bottom: 2%;
+  }
 }
