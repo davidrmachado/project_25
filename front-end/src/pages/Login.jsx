@@ -55,7 +55,7 @@ function Login() {
   });
 
   return (
-    <main>
+    <div className="input_container">
       <img src={ logoCopoCheio } alt="logotipo Copo Cheio" className="logo" />
 
       <div id="info">Digite email e senha para login</div>
@@ -110,7 +110,7 @@ function Login() {
       >
         {errorMessage}
       </div>
-    </main>
+    </div>
   );
 }
 
