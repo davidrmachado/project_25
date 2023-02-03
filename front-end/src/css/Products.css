@@ -1,9 +1,6 @@
 @media only screen and ( max-width : 768px ) {
 
-  div h1,
-  h2,
-  h3,
-  h4 {
+  div h1, h2, h3, h4 {
     color: #454545;
     font-weight: 700;
     height: auto;
@@ -40,10 +37,6 @@
 
   button p {
     color: rgb(43, 17, 0);
-    height: auto;
-  }
-
-  nav.navbar p {
     height: auto;
   }
 
@@ -167,8 +160,8 @@
 
   button.button_cart {
     align-items: center;
-    background-image: url('../images/cart_icon.png');
     background-color: rgb(43, 165, 102);
+    background-image: url('../images/cart_icon.png');
     background-position: 8px 3px;
     background-repeat: no-repeat;
     background-size: 16%;
@@ -177,8 +170,6 @@
     padding-right: 40px;
     width: 75%;
   }
-
-
 
   #total {
     color: rgb(19, 19, 19);
