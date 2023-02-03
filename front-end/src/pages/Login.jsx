@@ -58,9 +58,9 @@ function Login() {
     <div className="login_container">
       <img src={ logoCopoCheio } alt="logotipo Copo Cheio" className="logo" />
 
-      <div id="info">Digite email e senha para login</div>
+      <div className="info">Digite email e senha para login</div>
 
-      <div className='input_container'>
+      <div className="input_container">
         <label htmlFor="email-input">
           {/* Email */}
           <input

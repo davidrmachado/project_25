@@ -18,8 +18,8 @@
 
   .login_container {
     display: flex;
-    height: auto;
     flex-direction: column;
+    height: auto;
   }
 
   .warning {
@@ -43,7 +43,7 @@
     justify-content: space-around;
   }
 
-  #info {
+  .info {
     border-top: 1px rgb(204, 204, 204);
     color: #454545;
     font-size: 0.8em;
