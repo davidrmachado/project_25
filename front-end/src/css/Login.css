@@ -16,13 +16,13 @@
     width: 99%;
   }
 
-  div.input_container {
-    height: auto;
+  .login_container {
     display: flex;
     flex-direction: column;
+    height: auto;
   }
 
-  div.warning {
+  .warning {
     align-items: center;
     display: flex;
     height: auto;
@@ -30,12 +30,12 @@
     margin-bottom: 2%;
   }
 
-  #input_container {
+  .input_container {
     margin: auto;
     width: 100%;
   }
 
-  #button_container, #input_container {
+  .button_container, .input_container {
     align-items: stretch;
     display: flex;
     flex-direction: column;
@@ -43,7 +43,7 @@
     justify-content: space-around;
   }
 
-  #info {
+  .info {
     border-top: 1px rgb(204, 204, 204);
     color: #454545;
     font-size: 0.8em;
@@ -73,39 +73,39 @@
     width: 98%;
   }
 
-  button.register-btn {
+  .register-btn {
     background-color: #b45abe;
     border: 1px solid rgba(27, 31, 35, 0.15);
     color: white;
     line-height: 20px;
   }
 
-  button.register-btn:hover {
+  .register-btn:hover {
     background-color: #bd77a9;
   }
 
-  button.register-btn:focus {
+  .register-btn:focus {
     box-shadow: rgba(219, 219, 219, 0.836) 0 0 0 3px;
     outline: none;
   }
 
-  button.login-btn {
+  .login-btn {
     background-color: rgb(43, 165, 102);
     border: 1px solid rgba(27, 31, 35, 0.15);
     color: white;
     line-height: 20px;
   }
 
-  button.login-btn:hover {
+  .login-btn:hover {
     background-color: rgba(43, 165, 102, 0.7);
   }
 
-  button.login-btn:disabled {
+  .login-btn:disabled {
     background-color: rgba(170, 233, 200, 0.7);
     cursor: default;
   }
 
-  img.logo {
+  .logo {
     margin: 5% auto;
     max-height: 70%;
     max-width: 80%;
@@ -140,10 +140,10 @@
 
 /* Tablets and Small Notebooks */
 
-/* @media only screen and (min-width: 780px) {   
+/* @media only screen and (min-width: 780px) {
 } */
 
 /* Large Screens */
 
-/* @media only screen and (min-width: 1200px) {   
+/* @media only screen and (min-width: 1200px) {
 } */

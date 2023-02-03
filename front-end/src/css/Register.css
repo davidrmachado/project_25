@@ -1,36 +1,22 @@
-@media only screen and (max-width: 3600px) {
+@media only screen and ( max-width : 768px ) {
+
   .img_container {
     align-items: center;
     display: flex;
     height: 40vh;
   }
 
-  img.logo {
+  .logo {
     height: auto;
     margin: 5% auto;
   }
 
-  button {
-    appearance: none;
-    border-radius: 24px;
-    cursor: pointer;
-    display: inline-block;
-    height: 8vh;
-    margin: 2% auto;
-    padding: 6%;
-    position: relative;
-    text-align: center;
-    touch-action: manipulation;
-    white-space: nowrap;
-    width: 98%;
-  }
-
-  button.register-btn:disabled {
+  .register-btn:disabled {
     background-color: #e99ff1;
     cursor: default;
   }
 
-  div.warningRegister {
+  .warningRegister {
     align-items: center;
     display: flex;
     height: auto;

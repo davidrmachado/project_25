@@ -82,7 +82,7 @@ function ItemCard() {
           key={ product.id }
           data-testid={ `customer_products__element-card-price-${product.id}` }
         >
-          <div className="title">
+          <div className="product_title">
             <h2
               data-testid={ `customer_products__element-card-title-${product.id}` }
             >

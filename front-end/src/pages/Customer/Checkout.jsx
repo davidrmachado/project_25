@@ -29,8 +29,6 @@ export default function Checkout() {
       products: cart,
     };
 
-    console.log('fiz a compra, aqui estão os produtos:', orderData);
-
     try {
       const response = await api.post('/sale', orderData, {
         headers: {
@@ -67,7 +65,7 @@ export default function Checkout() {
       <div className="divider">
         <h1>Detalhes e Endereço para Entrega</h1>
       </div>
-      <form className="checkout">
+      <form>
         <label htmlFor="seller">
           Pessoa Vendedora Responsável
           <select
