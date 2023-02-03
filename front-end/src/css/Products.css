@@ -158,7 +158,7 @@
     z-index: 1000;
   }
 
-  button.button_cart {
+  .button_cart {
     align-items: center;
     background-color: rgb(43, 165, 102);
     background-image: url('../images/cart_icon.png');
