@@ -16,9 +16,9 @@
     width: 99%;
   }
 
-  .input_container {
-    height: auto;
+  .login_container {
     display: flex;
+    height: auto;
     flex-direction: column;
   }
 
@@ -30,12 +30,12 @@
     margin-bottom: 2%;
   }
 
-  #input_container {
+  .input_container {
     margin: auto;
     width: 100%;
   }
 
-  #button_container, #input_container {
+  .button_container, .input_container {
     align-items: stretch;
     display: flex;
     flex-direction: column;
@@ -140,10 +140,10 @@
 
 /* Tablets and Small Notebooks */
 
-/* @media only screen and (min-width: 780px) {   
+/* @media only screen and (min-width: 780px) {
 } */
 
 /* Large Screens */
 
-/* @media only screen and (min-width: 1200px) {   
+/* @media only screen and (min-width: 1200px) {
 } */

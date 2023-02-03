@@ -36,7 +36,7 @@ function Login() {
       }
     } catch (err) {
       console.log(err);
-      setErrorMessage(err.message);
+      setErrorMessage('Usuário e/ou senha inválidos');
     }
   };
 
@@ -55,12 +55,12 @@ function Login() {
   });
 
   return (
-    <div className="input_container">
+    <div className="login_container">
       <img src={ logoCopoCheio } alt="logotipo Copo Cheio" className="logo" />
 
       <div id="info">Digite email e senha para login</div>
 
-      <div id="input_container">
+      <div className='input_container'>
         <label htmlFor="email-input">
           {/* Email */}
           <input
@@ -85,7 +85,7 @@ function Login() {
         </label>
       </div>
 
-      <div id="button_container">
+      <div className="button_container">
         <button
           type="button"
           className="login-btn"
