@@ -36,7 +36,7 @@ function Login() {
       }
     } catch (err) {
       console.log(err);
-      setErrorMessage('Usuário e/ou senha inválidos');
+      setErrorMessage(err.message);
     }
   };
 

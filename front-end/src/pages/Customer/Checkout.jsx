@@ -29,8 +29,6 @@ export default function Checkout() {
       products: cart,
     };
 
-    console.log('fiz a compra, aqui estão os produtos:', orderData);
-
     try {
       const response = await api.post('/sale', orderData, {
         headers: {

@@ -23,6 +23,11 @@ export default function ShoppingCart({ products = [], buttonEnabled = false, pre
     setCart(newCart);
   };
 
+  const getQuantity = (product) => {
+    if (product.quantity) { return product.quantity; }
+    return product.SaleProduct.quantity;
+  };
+
   return (
     <section>
       <div id="cart_list">
@@ -38,19 +43,26 @@ export default function ShoppingCart({ products = [], buttonEnabled = false, pre
               </div>
               <div className="item_info">
                 <p className="item_price">
-                  {product.quantity}
-                  { ' x R$ '}
+                  {getQuantity(product)}
+                  { 'x R$ '}
                   {fixNumberFormat(Number(product.price))}
                 </p>
               </div>
               <div className="item_info">
                 { buttonEnabled ? (
                   <p className="item_total">
-                    { 'Total R$ ' }
-                    {fixNumberFormat(Number(product.price * product.quantity))}
+                    Total R$
+                    { ' ' }
+                    {fixNumberFormat(Number(product.price * getQuantity(product)))}
                   </p>
                 ) : (
-                  fixNumberFormat(Number(product.price * product.SaleProduct.quantity))
+                  <p className="item_total">
+                    Total R$
+                    { ' ' }
+                    {fixNumberFormat(Number(
+                      product.price * product.SaleProduct.quantity,
+                    ))}
+                  </p>
                 ) }
               </div>
             </div>
